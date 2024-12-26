@@ -36,7 +36,20 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'category_id' => 'required',
+            'color_id' => 'required',
+            'brand_id' => 'required',
+            'season_id' => 'required',
+            'price' => 'nullable|integer',
+            'purchase_date' => 'nullable|date',
+            'pre_regist_wear_count' => 'nullable|integer',
+        ]);
+        $validated['user_id'] = auth()->id();
+        $item = Item::create($validated);
+        $request->session()->flash('message', '保存しました');
+        return back();
     }
 
     /**
