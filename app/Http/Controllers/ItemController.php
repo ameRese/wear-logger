@@ -78,7 +78,20 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'category_id' => 'required',
+            'color_id' => 'required',
+            'brand_id' => 'required',
+            'season_id' => 'required',
+            'price' => 'nullable|integer',
+            'purchase_date' => 'nullable|date',
+            'pre_regist_wear_count' => 'nullable|integer',
+        ]);
+        $validated['user_id'] = auth()->id();
+        $item->update($validated);
+        $request->session()->flash('message', '更新しました');
+        return back();
     }
 
     /**

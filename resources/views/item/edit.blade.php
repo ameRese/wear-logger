@@ -10,7 +10,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <form method="post" action="" class="mx-auto">
+        <form method="post" action="{{ route('item.update', $item) }}" class="mx-auto">
             @csrf
             @method('patch')
             <img src="{{ asset('img/180x240Dummy.png') }}" alt="">
