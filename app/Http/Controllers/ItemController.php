@@ -66,7 +66,11 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        $categories = Category::all();
+        $colors = Color::all();
+        $brands = Brand::all();
+        $seasons = Season::all();
+        return view('item.edit', compact('item', 'categories', 'colors', 'brands', 'seasons'));
     }
 
     /**
