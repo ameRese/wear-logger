@@ -38,6 +38,10 @@
             </tr>
         </table>
         <x-secondary-button>着用日編集</x-secondary-button>
-        <x-secondary-button>アイテムを削除</x-secondary-button>
+        <form method="post" action="{{ route('item.destroy', $item) }}">
+            @csrf
+            @method('delete')
+            <x-primary-button>アイテムを削除</x-primary-button>
+        </form>
     </div>
 </x-app-layout>

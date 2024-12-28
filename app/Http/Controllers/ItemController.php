@@ -97,8 +97,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Item $item)
+    public function destroy(Request $request, Item $item)
     {
-        //
+        $item->delete();
+        $request->session()->flash('message', '削除しました');
+        return redirect()->route('item.index');
     }
 }
