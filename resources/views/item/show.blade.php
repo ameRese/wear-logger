@@ -37,7 +37,10 @@
                 <td>{{ $item->pre_regist_wear_count }}</td>
             </tr>
         </table>
-        <x-secondary-button>着用日編集</x-secondary-button>
+        <a href="{{ route('item.edit', $item) }}">
+            <x-primary-button>アイテム編集</x-primary-button>
+        </a>
+        <x-primary-button>着用日編集</x-primary-button>
         <form method="post" action="{{ route('item.destroy', $item) }}">
             @csrf
             @method('delete')
