@@ -33,13 +33,13 @@
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">着用日数:</dt>
-                                    <dd class="px-1"></dd>
+                                    <dd class="px-1">{{ $item->wearCount() }}</dd>
                                 </dl>
                             </div>
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">最終着用日:</dt>
-                                    <dd class="px-1"></dd>
+                                    <dd class="px-1">{{ $item->latestWearLog()->wear_date ?? '-' }}</dd>
                                 </dl>
                             </div>
                         </div>
@@ -66,13 +66,13 @@
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">着用日数:</dt>
-                                    <dd class="px-1"></dd>
+                                    <dd class="px-1">{{ $item->wearCount() }}</dd>
                                 </dl>
                             </div>
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">最終着用日:</dt>
-                                    <dd class="px-1"></dd>
+                                    <dd class="px-1">{{ $item->latestWearLog()->wear_date ?? '-' }}</dd>
                                 </dl>
                             </div>
                         </div>

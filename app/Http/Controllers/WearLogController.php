@@ -13,6 +13,7 @@ class WearLogController extends Controller
             'item_id' => $item->id,
             'wear_date' => $request->date ?? today(),
         ]);
+        $request->session()->flash('message', '保存しました');
         return back();
     }
 }

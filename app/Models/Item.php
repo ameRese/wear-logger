@@ -42,4 +42,14 @@ class Item extends Model
     public function wearLogs() {
         return $this->hasMany(WearLog::class);
     }
+
+    public function wearCount() {
+        $preRegistWearCount = $this->pre_regist_wear_count;
+        $postRegistWearCount = $this->wearLogs()->count();
+        return $preRegistWearCount + $postRegistWearCount;
+    }
+
+    public function latestWearLog() {
+        return $this->wearLogs()->orderBy('wear_date', 'desc')->first();
+    }
 }
