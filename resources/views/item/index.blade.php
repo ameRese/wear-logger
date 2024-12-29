@@ -79,7 +79,10 @@
                     </div>
                     <hr>
                     <div class="flex">
-                        <x-primary-button>今日着た！</x-primary-button>
+                        <form method="post" action="{{ route('wear_log.store', $item) }}">
+                            @csrf
+                            <x-primary-button>今日着た！</x-primary-button>
+                        </form>
                         <a href="{{ route('item.show', $item) }}">
                             <x-primary-button>アイテム詳細</x-primary-button>
                         </a>
