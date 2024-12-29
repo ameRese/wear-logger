@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('item.index')" :active="request()->routeIs('item.index')">
+                        アイテム一覧・着用登録
+                    </x-nav-link>
+                    <x-nav-link :href="route('item.create')" :active="request()->routeIs('item.create')">
+                        アイテム登録
+                    </x-nav-link>
+                    <x-nav-link :href="route('stat.index')" :active="request()->routeIs('stat.index')">
+                        統計情報
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -69,6 +78,15 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('item.index')" :active="request()->routeIs('item.index')">
+                アイテム一覧・着用登録
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('item.create')" :active="request()->routeIs('item.create')">
+                アイテム登録
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('stat.index')" :active="request()->routeIs('stat.index')">
+                統計情報
             </x-responsive-nav-link>
         </div>
 
