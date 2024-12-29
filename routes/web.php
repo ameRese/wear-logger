@@ -12,6 +12,7 @@ Route::get('/', function () {
 Route::resource('item', ItemController::class);
 
 Route::post('wear_log/store/{item}', [WearLogController::class, 'store'])->name('wear_log.store');
+Route::delete('wear_log/{wear_log}', [WearLogController::class, 'destroy'])->name('wear_log.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

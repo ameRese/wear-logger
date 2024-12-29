@@ -16,4 +16,10 @@ class WearLogController extends Controller
         $request->session()->flash('message', '保存しました');
         return back();
     }
+
+    public function destroy(Request $request, WearLog $wearLog) {
+        $wearLog->delete();
+        $request->session()->flash('message', '削除しました');
+        return back();
+    }
 }

@@ -33,13 +33,13 @@
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">着用日数:</dt>
-                                    <dd class="px-1">{{ $item->wearCount() }}</dd>
+                                    <dd class="px-1">{{ $item->getWearCount() }}</dd>
                                 </dl>
                             </div>
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">最終着用日:</dt>
-                                    <dd class="px-1">{{ $item->latestWearLog()->wear_date ?? '-' }}</dd>
+                                    <dd class="px-1">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
                                 </dl>
                             </div>
                         </div>
@@ -66,23 +66,31 @@
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">着用日数:</dt>
-                                    <dd class="px-1">{{ $item->wearCount() }}</dd>
+                                    <dd class="px-1">{{ $item->getWearCount() }}</dd>
                                 </dl>
                             </div>
                             <div class="p-1">
                                 <dl class="flex">
                                     <dt class="px-1">最終着用日:</dt>
-                                    <dd class="px-1">{{ $item->latestWearLog()->wear_date ?? '-' }}</dd>
+                                    <dd class="px-1">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
                                 </dl>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="flex">
-                        <form method="post" action="{{ route('wear_log.store', $item) }}">
+                        @if ($item->isWearedToday())
+                        <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
                             @csrf
-                            <x-primary-button>今日着た！</x-primary-button>
+                            @method('delete')
+                            <x-primary-button>今日着た！を解除</x-primary-button>
                         </form>
+                        @else
+                            <form method="post" action="{{ route('wear_log.store', $item) }}">
+                                @csrf
+                                <x-primary-button>今日着た！</x-primary-button>
+                            </form>
+                        @endif
                         <a href="{{ route('item.show', $item) }}">
                             <x-primary-button>アイテム詳細</x-primary-button>
                         </a>
