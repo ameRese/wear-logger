@@ -17,6 +17,7 @@ Route::delete('wear_log/{wear_log}', [WearLogController::class, 'destroy'])->nam
 
 Route::get('stat', [StatController::class, 'index'])->name('stat.index');
 Route::get('stat/unused_item', [StatController::class, 'unusedItem'])->name('stat.unused_item');
+Route::get('stat/wear_rank', [StatController::class, 'wearRank'])->name('stat.wear_rank');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

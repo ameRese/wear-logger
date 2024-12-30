@@ -4,7 +4,7 @@
             一覧表示
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto px-2 text-center">
+    <div class="max-w-7xl mx-auto px-2 text-center mb-[42px]">
         @if (session('message'))
             <div class="text-red-600 font-bold">
                 {{ session('message') }}
