@@ -2,7 +2,7 @@
 const searchSiblingNode = (currentNode, className) => {
     let sibling = currentNode.nextElementSibling;
     while (sibling) {
-        if (sibling.className === className) { return sibling; }
+        if (sibling.className.includes(className)) { return sibling; }
         sibling = sibling.nextElementSibling;
     }
 }
