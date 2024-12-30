@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('season_id');
             $table->integer('price')->nullable();
             $table->date('purchase_date')->nullable();
-            $table->integer('pre_regist_wear_count')->nullable();
+            $table->integer('pre_regist_wear_count');
             $table->timestamps();
         });
     }

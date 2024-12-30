@@ -47,6 +47,7 @@ class ItemController extends Controller
             'purchase_date' => 'nullable|date',
             'pre_regist_wear_count' => 'nullable|integer',
         ]);
+        $validated['pre_regist_wear_count'] ??= 0;
         $validated['user_id'] = auth()->id();
         $item = Item::create($validated);
         $request->session()->flash('message', '保存しました');
@@ -88,6 +89,7 @@ class ItemController extends Controller
             'purchase_date' => 'nullable|date',
             'pre_regist_wear_count' => 'nullable|integer',
         ]);
+        $validated['pre_regist_wear_count'] ??= 0;
         $validated['user_id'] = auth()->id();
         $item->update($validated);
         $request->session()->flash('message', '更新しました');
