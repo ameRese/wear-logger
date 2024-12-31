@@ -1,26 +1,32 @@
-// 兄弟ノードを検索
+// 兄弟ノードを検索して見つかった要素を返す
 const searchSiblingNode = (currentNode, className) => {
     let sibling = currentNode.nextElementSibling;
     while (sibling) {
         if (sibling.className.includes(className)) { return sibling; }
         sibling = sibling.nextElementSibling;
     }
+    return null;
 }
 
-// モーダル背景クリック時にモーダルを閉じる
-const backdropClickHandler = (e, modal) => {
-    if (e.target === modal) {
+// 対象がモーダル背景またはキャンセルボタンの場合にモーダルを閉じる
+const closeModal = (e, modal) => {
+    if (e.target === modal || e.target.className.includes('js-cancel')) {
         modal.close();
     }
 };
 
+// 登録リスナー削除時のためにイベントリスナーの関数参照を保持
+const modalClickHandler = e => closeModal(e, e.currentTarget);
+
 // モーダルを開く
 const openModal = e => {
     e.preventDefault();
-    // targetプロパティはクリックされた具体的な子要素を指すのでcurrentTargetを使う
+    // クリックイベントの登録先を取得するためにtargetでなくcurrentTargetプロパティを使う
     const modal = searchSiblingNode(e.currentTarget, 'js-modal');
+    // クリックイベントが重複しないようにイベントリスナーを削除してから登録する
+    modal.removeEventListener('click', modalClickHandler);
+    modal.addEventListener('click', modalClickHandler);
     modal.showModal();
-    modal.addEventListener('click', e => backdropClickHandler(e, modal));
 };
 
 const links = document.querySelectorAll('.js-link');

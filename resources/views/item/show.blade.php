@@ -41,10 +41,24 @@
             <x-primary-button>アイテム編集</x-primary-button>
         </a>
         <x-primary-button>着用日編集</x-primary-button>
-        <form method="post" action="{{ route('item.destroy', $item) }}">
-            @csrf
-            @method('delete')
+        <a href="#" class="js-link">
             <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
-        </form>
+        </a>
+        <dialog class="js-modal p-1">
+            <div class="p-4">
+                <p class="pb-4">本当に削除してよろしいですか？</p>
+                <div class="flex justify-center">
+                    <form method="post" action="{{ route('item.destroy', $item) }}">
+                        @csrf
+                        @method('delete')
+                        <x-primary-button class="bg-red-700">はい</x-primary-button>
+                    </form>
+                    <x-primary-button class="js-cancel ml-2">
+                        キャンセル
+                    </x-primary-button>
+                </div>
+            </div>
+        </dialog>
     </div>
+    <script src="{{ asset('js/modal.js') }}"></script>
 </x-app-layout>
