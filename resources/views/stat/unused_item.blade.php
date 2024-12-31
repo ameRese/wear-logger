@@ -8,21 +8,21 @@
         @if ($unusedItems->isEmpty())
             <p>未使用のアイテムはありません。</p>
         @else
-            <input type="search" placeholder="カテゴリー、ブランドなど" class="p-1 min-w-80">
+            <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
             @foreach ($unusedItems as $unusedItem)
-                <div class="flex py-1">
+                <div class="js-item flex py-1">
                     <img src="{{ asset('img/90x120Dummy.png') }}" alt="" width="90" height="120">
                     <div class="py-1 ml-2 min-w-[261px]">
                         <div class="pb-1">
                             <div class="flex justify-between">
-                                <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->category->name }}</div>
-                                <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->brand->name }}</div>
+                                <span class="js-category pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->category->name }}</span>
+                                <span class="js-brand pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->brand->name }}</span>
                             </div>
                         </div>
                         <div class="pb-1">
                             <div class="flex justify-between">
-                                <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->name }}</div>
-                                <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->season->name }}</div>
+                                <span class="js-name pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->name }}</span>
+                                <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $unusedItem->season->name }}</span>
                             </div>
                         </div>
                         <hr>
@@ -44,4 +44,5 @@
             @endforeach
         @endif
     </div>
+    <script src="{{ asset('js/search.js') }}"></script>
 </x-app-layout>

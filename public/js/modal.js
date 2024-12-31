@@ -23,7 +23,7 @@ const openModal = e => {
     modal.addEventListener('click', e => backdropClickHandler(e, modal));
 };
 
-const items = document.querySelectorAll('.js-item');
-for (let item of items) {
-    item.addEventListener('click', e => openModal(e));
+const links = document.querySelectorAll('.js-link');
+for (let link of links) {
+    link.addEventListener('click', e => openModal(e));
 }

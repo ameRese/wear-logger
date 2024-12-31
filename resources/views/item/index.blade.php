@@ -10,23 +10,23 @@
                 {{ session('message') }}
             </div>
         @endif
-        <input type="search" placeholder="カテゴリー、ブランドなど" class="p-1 min-w-80">
+        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
         @foreach ($items as $item)
-            <div>
-                <a href="#" class="js-item">
+            <div class="js-item">
+                <a href="#" class="js-link">
                     <div class="flex py-1">
                         <img src="{{ asset('img/90x120Dummy.png') }}" alt="" width="90" height="120">
                         <div class="py-1 ml-2 min-w-[261px]">
                             <div class="pb-1">
                                 <div class="flex justify-between">
-                                    <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</div>
-                                    <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</div>
+                                    <span class="js-category pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</span>
+                                    <span class="js-brand pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</span>
                                 </div>
                             </div>
                             <div class="pb-1">
                                 <div class="flex justify-between">
-                                    <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</div>
-                                    <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</div>
+                                    <span class="js-name pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</span>
+                                    <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</span>
                                 </div>
                             </div>
                             <hr>
@@ -52,14 +52,14 @@
                         <div class="py-1 ml-2 min-w-[261px]">
                             <div class="pb-1">
                                 <div class="flex justify-between">
-                                    <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</div>
-                                    <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</div>
+                                    <span class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</span>
+                                    <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</span>
                                 </div>
                             </div>
                             <div class="pb-1">
                                 <div class="flex justify-between">
-                                    <div class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</div>
-                                    <div class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</div>
+                                    <span class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</span>
+                                    <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</span>
                                 </div>
                             </div>
                             <hr>
@@ -108,5 +108,6 @@
             <x-secondary-button class="ml-2">複数選択</x-secondary-button>
         </div>
     </footer>
+    <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
 </x-app-layout>
