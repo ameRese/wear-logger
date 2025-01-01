@@ -10,10 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('item', ItemController::class);
+Route::resource('item', ItemController::class)->only(['index', 'create', 'store']);
+Route::resource('item', ItemController::class)->except(['index', 'create', 'store'])->middleware('item_owner');
 
-Route::post('wear_log/store/{item}', [WearLogController::class, 'store'])->name('wear_log.store');
-Route::delete('wear_log/{wear_log}', [WearLogController::class, 'destroy'])->name('wear_log.destroy');
+Route::post('wear_log/store/{item}', [WearLogController::class, 'store'])->name('wear_log.store')->middleware('item_owner');
+Route::delete('wear_log/{wear_log}', [WearLogController::class, 'destroy'])->name('wear_log.destroy')->middleware('wear_log_owner');
 
 Route::get('stat', [StatController::class, 'index'])->name('stat.index');
 Route::get('stat/unused_item', [StatController::class, 'unusedItem'])->name('stat.unused_item');

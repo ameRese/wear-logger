@@ -12,12 +12,16 @@ class StatController extends Controller
     }
 
     public function unusedItem() {
-        $unusedItems = Item::doesntHave('wearLogs')->where('pre_regist_wear_count', 0)->get();
+        $unusedItems = Item::where('user_id', auth()->id())
+            ->doesntHave('wearLogs')
+            ->where('pre_regist_wear_count', 0)
+            ->get();
         return view('stat.unused_item', compact('unusedItems'));
     }
 
     public function wearRank() {
-        $wearCountSortedItems = Item::withCount('wearLogs')
+        $wearCountSortedItems = Item::where('user_id', auth()->id())
+            ->withCount('wearLogs')
             ->get()
             ->sortByDesc(function ($item) {
                 return $item->wearLogs_count + $item->pre_regist_wear_count;
