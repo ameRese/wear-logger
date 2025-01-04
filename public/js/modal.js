@@ -1,4 +1,4 @@
-// 兄弟ノードを検索して見つかった要素を返す
+// 兄弟ノードをクラス名で検索して最初に見つかった要素を返す
 const searchSiblingNode = (currentNode, className) => {
     let sibling = currentNode.nextElementSibling;
     while (sibling) {

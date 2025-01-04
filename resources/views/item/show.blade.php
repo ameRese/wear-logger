@@ -37,28 +37,65 @@
                 <td class="pl-2 py-1">{{ $item->pre_regist_wear_count }}</td>
             </tr>
         </table>
-        <a href="{{ route('item.edit', $item) }}">
-            <x-primary-button>アイテム編集</x-primary-button>
-        </a>
-        <x-primary-button>着用日編集</x-primary-button>
-        <a href="#" class="js-link">
-            <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
-        </a>
-        <dialog class="js-modal p-1">
-            <div class="p-4">
-                <p class="pb-4">本当に削除してよろしいですか？</p>
-                <div class="flex justify-center">
-                    <form method="post" action="{{ route('item.destroy', $item) }}">
-                        @csrf
-                        @method('delete')
-                        <x-primary-button class="bg-red-700">はい</x-primary-button>
-                    </form>
-                    <x-primary-button class="js-cancel ml-2">
-                        キャンセル
-                    </x-primary-button>
+        <div class="mt-1">
+            <a href="{{ route('item.edit', $item) }}">
+                <x-primary-button>アイテム編集</x-primary-button>
+            </a>
+            <a href="#" class="js-link">
+                <x-primary-button>着用日編集</x-primary-button>
+            </a>
+            <dialog class="js-modal max-w-full p-1">
+                <form class="text-center">
+                    <div class="flex justify-between">
+                        <x-secondary-button id="js-previous-month">
+                            前月
+                        </x-secondary-button>
+                        <span id="js-calendar-header"></span>
+                        <x-secondary-button id="js-next-month">
+                            次月
+                        </x-secondary-button>
+                    </div>
+                    <div class="flex justify-center text-center">
+                        <span class="flex-1 p-2">日</span>
+                        <span class="flex-1 p-2">月</span>
+                        <span class="flex-1 p-2">火</span>
+                        <span class="flex-1 p-2">水</span>
+                        <span class="flex-1 p-2">木</span>
+                        <span class="flex-1 p-2">金</span>
+                        <span class="flex-1 p-2">土</span>
+                    </div>
+                    <div id="js-calendar-body"></div>
+                    <hr>
+                    <div class="mt-1">
+                        <x-primary-button id="js-update">
+                            更新
+                        </x-primary-button>
+                        <x-primary-button type="button" class="js-cancel ml-2">
+                            キャンセル
+                        </x-primary-button>
+                    </div>
+                </form>
+            </dialog>
+            <a href="#" class="js-link">
+                <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
+            </a>
+            <dialog class="js-modal p-1">
+                <div class="p-4">
+                    <p class="pb-4">本当に削除してよろしいですか？</p>
+                    <div class="flex justify-center">
+                        <form method="post" action="{{ route('item.destroy', $item) }}">
+                            @csrf
+                            @method('delete')
+                            <x-primary-button class="bg-red-700">はい</x-primary-button>
+                        </form>
+                        <x-primary-button class="js-cancel ml-2">
+                            キャンセル
+                        </x-primary-button>
+                    </div>
                 </div>
-            </div>
-        </dialog>
+            </dialog>
+        </div>
     </div>
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/calendar.js') }}"></script>
 </x-app-layout>
