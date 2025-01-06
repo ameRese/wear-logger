@@ -18,7 +18,7 @@ const getCalEndDate = (baseDate) => {
 const getCalWeekCount = (calStartDate, calEndDate) => {
     // 1日は86400000ミリ秒
     const msDiff = calEndDate.getTime() - calStartDate.getTime() + 86400000;
-    const dateDiff = msDiff / (1000 * 60 * 60 * 24);
+    const dateDiff = msDiff / 86400000;
     return dateDiff / 7;
 };
 

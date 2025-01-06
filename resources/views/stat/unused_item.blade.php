@@ -44,5 +44,5 @@
             @endforeach
         @endif
     </div>
-    <script src="{{ asset('js/search.js') }}"></script>
+    @vite('resources/js/modules/search.js')
 </x-app-layout>

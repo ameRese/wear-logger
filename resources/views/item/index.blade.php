@@ -108,6 +108,5 @@
             <x-secondary-button class="ml-2">複数選択</x-secondary-button>
         </div>
     </footer>
-    <script src="{{ asset('js/search.js') }}"></script>
-    <script src="{{ asset('js/modal.js') }}"></script>
+    @vite(['resources/js/modules/search.js', 'resources/js/modules/modal.js'])
 </x-app-layout>

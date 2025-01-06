@@ -96,6 +96,5 @@
             </dialog>
         </div>
     </div>
-    <script src="{{ asset('js/modal.js') }}"></script>
-    <script src="{{ asset('js/calendar.js') }}"></script>
+    @vite(['resources/js/modules/modal.js', 'resources/js/modules/calendar.js'])
 </x-app-layout>
