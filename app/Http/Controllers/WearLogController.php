@@ -22,4 +22,23 @@ class WearLogController extends Controller
         $request->session()->flash('message', '削除しました');
         return back();
     }
+
+    public function getWearDates(Item $item) {
+        $wearDates = WearLog::where('item_id', $item->id)->pluck('wear_date');
+        return response()->json($wearDates);
+    }
+
+    public function updateWearLogs(Request $request, Item $item) {
+        $wearDatesToAdd = $request->input('wearDatesToAdd');
+        $wearDatesToDelete = $request->input('wearDatesToDelete');
+        foreach ($wearDatesToAdd as $wearDate) {
+            WearLog::create([
+                'item_id' => $item->id,
+                'wear_date' => $wearDate,
+            ]);
+        }
+        foreach ($wearDatesToDelete as $wearDate) {
+            WearLog::where('wear_date', $wearDate)->where('item_id', $item->id)->delete();
+        }
+    }
 }

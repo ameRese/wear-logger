@@ -5,8 +5,14 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto px-2 text-center">
+        @if (session('message'))
+            <div class="text-red-600 font-bold">
+                {{ session('message') }}
+            </div>
+        @endif
         <img src="{{ asset('img/180x240Dummy.png') }}" alt="" width="180" height="240" class="mx-auto mb-1">
         <h1>{{ $item->name }}</h1>
+        <span class="hidden" id="js-item-id">{{ $item->id }}</span>
         <table class="mx-auto">
             <tr>
                 <th class="text-left">カテゴリー</th>
@@ -45,7 +51,7 @@
                 <x-primary-button>着用日編集</x-primary-button>
             </a>
             <dialog class="js-modal max-w-full p-1">
-                <form class="text-center">
+                <div class="text-center">
                     <div class="flex justify-between">
                         <x-secondary-button id="js-previous-month">
                             前月
@@ -67,14 +73,14 @@
                     <div id="js-calendar-body"></div>
                     <hr>
                     <div class="mt-1">
-                        <x-primary-button id="js-update">
+                        <x-primary-button type="button" id="js-update">
                             更新
                         </x-primary-button>
                         <x-primary-button type="button" class="js-cancel ml-2">
                             キャンセル
                         </x-primary-button>
                     </div>
-                </form>
+                </div>
             </dialog>
             <a href="#" class="js-link">
                 <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
