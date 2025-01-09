@@ -10,10 +10,13 @@
                 {{ session('message') }}
             </div>
         @endif
-        <form method="post" action="{{ route('item.update', $item) }}" class="mx-auto text-center">
+        <form method="post" action="{{ route('item.update', $item) }}" class="mx-auto text-center" enctype="multipart/form-data">
             @csrf
             @method('patch')
-            <img src="{{ asset('img/180x240Dummy.png') }}" alt="" width="180" height="240" class="mx-auto mb-1">
+            <div class="text-left">
+                <label for="item" class="block">アイテム画像をアップロード (オプション):</label>
+                <input type="file" name="image" class="" accept="image/png, image/jpeg">
+            </div>
             <table class="mx-auto">
                 <tr>
                     <th class="text-left"><label for="item">アイテム名</label></th>

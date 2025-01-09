@@ -11,7 +11,8 @@
             <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
             @foreach ($unusedItems as $unusedItem)
                 <div class="js-item flex py-1">
-                    <img src="{{ asset('img/90x120Dummy.png') }}" alt="" width="90" height="120">
+                    <img src="{{ $unusedItem->image_path ? asset('storage/' . $unusedItem->image_path) : asset('img/no_image.png') }}"
+                        alt="" width="90" height="120">
                     <div class="py-1 ml-2 min-w-[261px]">
                         <div class="pb-1">
                             <div class="flex justify-between">

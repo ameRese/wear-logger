@@ -10,7 +10,8 @@
                 {{ session('message') }}
             </div>
         @endif
-        <img src="{{ asset('img/180x240Dummy.png') }}" alt="" width="180" height="240" class="mx-auto mb-1">
+        <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
+            alt="" width="180" height="240" class="mx-auto mb-1">
         <h1>{{ $item->name }}</h1>
         <span class="hidden" id="js-item-id">{{ $item->id }}</span>
         <table class="mx-auto">

@@ -8,6 +8,7 @@ use App\Models\Color;
 use App\Models\Item;
 use App\Models\Season;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -49,6 +50,13 @@ class ItemController extends Controller
         ]);
         $validated['pre_regist_wear_count'] ??= 0;
         $validated['user_id'] = auth()->id();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = Storage::disk('public')->putFile('img', $file);
+            $validated['image_path'] = $path;
+        }
+
         $item = Item::create($validated);
         $request->session()->flash('message', '保存しました');
         return back();
@@ -91,6 +99,13 @@ class ItemController extends Controller
         ]);
         $validated['pre_regist_wear_count'] ??= 0;
         $validated['user_id'] = auth()->id();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = Storage::disk('public')->putFile('img', $file);
+            $validated['image_path'] = $path;
+        }
+
         $item->update($validated);
         $request->session()->flash('message', '更新しました');
         return back();
