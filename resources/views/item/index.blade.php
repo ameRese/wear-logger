@@ -49,7 +49,8 @@
                 <hr>
                 <dialog class="js-modal max-w-full p-1">
                     <div class="flex mb-1">
-                        <img src="{{ asset('img/90x120Dummy.png') }}" alt="" width="90" height="120">
+                        <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
+                            alt="" width="90" height="120">
                         <div class="py-1 ml-2 min-w-[261px]">
                             <div class="pb-1">
                                 <div class="flex justify-between">

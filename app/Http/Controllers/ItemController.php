@@ -17,7 +17,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::where('user_id', auth()->id())->get();
+        $items = Item::where('user_id', auth()->id())
+            ->get()
+            ->sortByDesc(fn($item) => $item->getLatestWearLog()?->wear_date ?? null);
         return view('item.index', compact('items'));
     }
 

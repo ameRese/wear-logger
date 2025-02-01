@@ -44,7 +44,7 @@ const getDateElement = (calDate, inputId, baseMonth) => {
 
     const label = document.createElement('label');
     label.setAttribute('for', `checkbox${inputId}`);
-    label.classList.add('p-2', 'cursor-pointer', 'peer-checked:bg-blue-500');
+    label.classList.add('p-2', 'cursor-pointer', 'rounded-full', 'peer-checked:bg-blue-500');
     label.textContent = calDate.getDate();
     if (calDate.getMonth() !== baseMonth) { label.classList.add('text-gray-300'); }
 

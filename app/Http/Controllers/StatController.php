@@ -23,9 +23,7 @@ class StatController extends Controller
         $wearCountSortedItems = Item::where('user_id', auth()->id())
             ->withCount('wearLogs')
             ->get()
-            ->sortByDesc(function ($item) {
-                return $item->wearLogs_count + $item->pre_regist_wear_count;
-            });
+            ->sortByDesc(fn($item) => $item->wearLogs_count + $item->pre_regist_wear_count);
         return view('stat.wear_rank', compact('wearCountSortedItems'));
     }
 }
