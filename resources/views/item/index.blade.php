@@ -10,7 +10,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
+        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="m-2 p-1 min-w-80">
         @foreach ($items as $item)
             <div class="js-item">
                 <a href="#" class="js-link">
@@ -107,7 +107,7 @@
             <a href="{{ route('item.create') }}">
                 <x-primary-button>アイテム登録</x-primary-button>
             </a>
-            <x-secondary-button class="ml-2">複数選択</x-secondary-button>
+            {{-- <x-secondary-button class="ml-2">複数選択</x-secondary-button> --}}
         </div>
     </footer>
     @vite(['resources/js/modules/search.js', 'resources/js/modules/modal.js'])

@@ -8,7 +8,7 @@
         @if ($unusedItems->isEmpty())
             <p>未使用のアイテムはありません。</p>
         @else
-            <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
+            <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="m-2 p-1 min-w-80">
             @foreach ($unusedItems as $unusedItem)
                 <div class="js-item flex py-1">
                     <img src="{{ $unusedItem->image_path ? asset('storage/' . $unusedItem->image_path) : asset('img/no_image.png') }}"

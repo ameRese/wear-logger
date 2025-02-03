@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto px-2 text-center">
-        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="p-1 min-w-80">
+        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="m-2 p-1 min-w-80">
         @foreach ($wearCountSortedItems as $wearCountSortedItem)
             <div class="js-item flex py-1">
                 <img src="{{ $wearCountSortedItem->image_path ? asset('storage/' . $wearCountSortedItem->image_path) : asset('img/no_image.png') }}"
