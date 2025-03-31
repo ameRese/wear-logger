@@ -4,42 +4,7 @@
             着用回数ランキング
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto px-2 text-center">
-        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="m-2 p-1 min-w-80">
-        @foreach ($wearCountSortedItems as $wearCountSortedItem)
-            <div class="js-item flex py-1">
-                <img src="{{ $wearCountSortedItem->image_path ? asset('storage/' . $wearCountSortedItem->image_path) : asset('img/no_image.png') }}"
-                    alt="" width="90" height="120">
-                <div class="py-1 ml-2 min-w-[261px]">
-                    <div class="pb-1">
-                        <div class="flex justify-between">
-                            <span class="js-category pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $wearCountSortedItem->category->name }}</span>
-                            <span class="js-brand pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $wearCountSortedItem->brand->name }}</span>
-                        </div>
-                    </div>
-                    <div class="pb-1">
-                        <div class="flex justify-between">
-                            <span class="js-name pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $wearCountSortedItem->name }}</span>
-                            <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $wearCountSortedItem->season->name }}</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="pt-1">
-                        <dl class="flex justify-between">
-                            <dt class="pr-1">着用日数:</dt>
-                            <dd class="pl-1">{{ $wearCountSortedItem->getWearCount() }}</dd>
-                        </dl>
-                    </div>
-                    <div class="pt-1">
-                        <dl class="flex justify-between">
-                            <dt class="pr-1">最終着用日:</dt>
-                            <dd class="pl-1">{{ $wearCountSortedItem->getLatestWearLog()?->wear_date ?? '-' }}</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        @endforeach
+    <div class="max-w-7xl mx-auto px-2 text-center mb-[42px]">
+        <x-item-list :items="$wearCountSortedItems" :showModal="false" />
     </div>
-    @vite('resources/js/modules/search.js')
 </x-app-layout>
