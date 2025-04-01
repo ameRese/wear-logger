@@ -3,103 +3,104 @@
 @if ($items->isEmpty())
     <p>アイテムはありません。</p>
 @else
-    <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="m-2 p-1 min-w-80">
-    @foreach ($items as $item)
-        <div class="js-item">
-            @if ($showModal)
-                <a href="#" class="js-link">
-            @endif
-                <div class="flex py-1">
-                    <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
-                        alt="" width="90" height="120">
-                    <div class="py-1 ml-2 min-w-[261px]">
-                        <div class="pb-1">
-                            <div class="flex justify-between">
-                                <span class="js-category pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</span>
-                                <span class="js-brand pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</span>
-                            </div>
-                        </div>
-                        <div class="pb-1">
-                            <div class="flex justify-between">
-                                <span class="js-name pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</span>
-                                <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</span>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="pt-1">
-                            <dl class="flex justify-between">
-                                <dt class="pr-1">着用日数:</dt>
-                                <dd class="pl-1">{{ $item->getWearCount() }}</dd>
-                            </dl>
-                        </div>
-                        <div class="pt-1">
-                            <dl class="flex justify-between">
-                                <dt class="pr-1">最終着用日:</dt>
-                                <dd class="pl-1">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-            @if ($showModal)
-                </a>
-            @endif
-            <hr>
-
-            @if ($showModal)
-                <dialog class="js-modal max-w-full p-1">
-                    <div class="flex mb-1">
+    <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="border rounded-lg m-2 p-1 min-w-80">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @foreach ($items as $item)
+            <div class="js-item border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                @if ($showModal)
+                    <a href="#" class="js-link">
+                @endif
+                    <div class="flex px-2 py-1">
                         <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
-                            alt="" width="90" height="120">
-                        <div class="py-1 ml-2 min-w-[261px]">
+                            alt="" width="90" height="120" class="object-contain">
+                        <div class="py-1 ml-2 flex-1">
                             <div class="pb-1">
-                                <div class="flex justify-between">
-                                    <span class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->category->name }}</span>
-                                    <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->brand->name }}</span>
+                                <div class="grid grid-cols-2 gap-1">
+                                    <span class="js-category truncate text-left">{{ $item->category->name }}</span>
+                                    <span class="js-brand truncate text-right">{{ $item->brand->name }}</span>
                                 </div>
                             </div>
                             <div class="pb-1">
-                                <div class="flex justify-between">
-                                    <span class="pr-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->name }}</span>
-                                    <span class="pl-1 overflow-hidden whitespace-nowrap text-ellipsis">{{ $item->season->name }}</span>
+                                <div class="grid grid-cols-2 gap-1">
+                                    <span class="js-name truncate text-left">{{ $item->name }}</span>
+                                    <span class="pl-1 truncate text-right">{{ $item->season->name }}</span>
                                 </div>
                             </div>
                             <hr>
                             <div class="pt-1">
-                                <dl class="flex justify-between">
-                                    <dt class="pr-1">着用日数:</dt>
-                                    <dd class="pl-1">{{ $item->getWearCount() }}</dd>
+                                <dl class="grid grid-cols-2 gap-1">レイアウト見直し (未完)
+                                    <dt class="text-left">着用日数:</dt>
+                                    <dd class="text-right">{{ $item->getWearCount() }}</dd>
                                 </dl>
                             </div>
                             <div class="pt-1">
-                                <dl class="flex justify-between">
-                                    <dt class="pr-1">最終着用日:</dt>
-                                    <dd class="pl-1">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
+                                <dl class="grid grid-cols-2 gap-1">
+                                    <dt class="text-left">最終着用日:</dt>
+                                    <dd class="text-right">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
                                 </dl>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="flex justify-center mt-1">
-                        @if ($item->isWearedToday())
-                        <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
-                            @csrf
-                            @method('delete')
-                            <x-primary-button>今日着た！を解除</x-primary-button>
-                        </form>
-                        @else
-                            <form method="post" action="{{ route('wear_log.store', $item) }}">
+                @if ($showModal)
+                    </a>
+                @endif
+
+                @if ($showModal)
+                    <dialog class="js-modal max-w-md p-4 rounded-lg shadow-lg w-full">
+                        <div class="flex mb-3">
+                            <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
+                                alt="" width="90" height="120" class="object-contain">
+                            <div class="py-1 ml-3 flex-1">
+                                <div class="pb-1">
+                                    <div class="grid grid-cols-2 gap-1">
+                                        <span class="truncate text-left">{{ $item->category->name }}</span>
+                                        <span class="truncate text-right">{{ $item->brand->name }}</span>
+                                    </div>
+                                </div>
+                                <div class="pb-1">
+                                    <div class="grid grid-cols-2 gap-1">
+                                        <span class="truncate text-left">{{ $item->name }}</span>
+                                        <span class="truncate text-right">{{ $item->season->name }}</span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="pt-1">
+                                    <dl class="grid grid-cols-2 gap-1">
+                                        <dt class="text-left">着用日数:</dt>
+                                        <dd class="text-right">{{ $item->getWearCount() }}</dd>
+                                    </dl>
+                                </div>
+                                <div class="pt-1">
+                                    <dl class="grid grid-cols-2 gap-1">
+                                        <dt class="text-left">最終着用日:</dt>
+                                        <dd class="text-right">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-3">
+                        <div class="flex justify-center gap-2 mt-3">
+                            @if ($item->isWearedToday())
+                            <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
                                 @csrf
-                                <x-primary-button>今日着た！</x-primary-button>
+                                @method('delete')
+                                <x-primary-button>今日着た！を解除</x-primary-button>
                             </form>
-                        @endif
-                        <a href="{{ route('item.show', $item) }}">
-                            <x-primary-button class="ml-2">アイテム詳細</x-primary-button>
-                        </a>
-                    </div>
-                </dialog>
-            @endif
-        </div>
-    @endforeach
+                            @else
+                                <form method="post" action="{{ route('wear_log.store', $item) }}">
+                                    @csrf
+                                    <x-primary-button>今日着た！</x-primary-button>
+                                </form>
+                            @endif
+                            <a href="{{ route('item.show', $item) }}">
+                                <x-primary-button class="ml-2">アイテム詳細</x-primary-button>
+                            </a>
+                        </div>
+                    </dialog>
+                @endif
+            </div>
+        @endforeach
+    </div>
 @endif
 
 @if ($showModal)
