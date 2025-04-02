@@ -28,7 +28,7 @@
                             </div>
                             <hr>
                             <div class="pt-1">
-                                <dl class="grid grid-cols-2 gap-1">レイアウト見直し (未完)
+                                <dl class="grid grid-cols-2 gap-1">
                                     <dt class="text-left">着用日数:</dt>
                                     <dd class="text-right">{{ $item->getWearCount() }}</dd>
                                 </dl>
