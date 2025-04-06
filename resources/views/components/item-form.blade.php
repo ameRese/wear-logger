@@ -1,6 +1,12 @@
 @props(['item' => null, 'categories', 'colors', 'brands', 'seasons', 'buttonText', 'route', 'method' => 'post'])
 
-<div class="max-w-2xl mx-auto">
+<div class="max-w-2xl mx-auto px-2">
+    @if (session('message'))
+        <div class="text-red-600 font-bold">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <form method="post" action="{{ $route }}" class="mx-auto p-3 bg-white rounded-lg shadow-sm" enctype="multipart/form-data">
         @csrf
         @if($method === 'patch')
