@@ -67,7 +67,7 @@
                 </div>
             </div>
             
-            <div class="mt-1">
+            <div class="mt-6 text-center">
                 <a href="{{ route('item.edit', $item) }}">
                     <x-primary-button>アイテム編集</x-primary-button>
                 </a>
