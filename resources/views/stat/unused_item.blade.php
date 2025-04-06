@@ -4,7 +4,5 @@
             未使用アイテム
         </h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto px-2 text-center mb-[42px]">
-        <x-item-list :items="$unusedItems" :showModal="false" />
-    </div>
+    <x-item-list :items="$unusedItems" :showModal="false" />
 </x-app-layout>

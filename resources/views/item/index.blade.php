@@ -4,14 +4,9 @@
             一覧表示
         </h2>
     </x-slot>
-    <div class="container mx-auto px-2 text-center mb-[42px]">
-        @if (session('message'))
-            <div class="text-red-600 font-bold">
-                {{ session('message') }}
-            </div>
-        @endif
-        
+    <div class="mb-[42px]">
         <x-item-list :items="$items" :showModal="true" />
+    </div>
     <footer class="fixed bottom-0 w-full bg-white">
         <hr>
         <div class="flex justify-center m-1">
