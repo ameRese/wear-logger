@@ -4,14 +4,17 @@
             アイテム編集
         </h2>
     </x-slot>
-    <x-item-form
-        :item="$item"
-        :categories="$categories"
-        :colors="$colors"
-        :brands="$brands"
-        :seasons="$seasons"
-        buttonText="更新"
-        :route="route('item.update', $item)"
-        method="patch"
-    />
+
+    <div class="py-4">
+        <x-item-form
+            :item="$item"
+            :categories="$categories"
+            :colors="$colors"
+            :brands="$brands"
+            :seasons="$seasons"
+            buttonText="更新"
+            :route="route('item.update', $item)"
+            method="patch"
+        />
+    </div>
 </x-app-layout>
