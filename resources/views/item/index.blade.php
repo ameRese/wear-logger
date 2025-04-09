@@ -4,7 +4,7 @@
             一覧表示
         </h2>
     </x-slot>
-    <div class="mb-[42px]">
+    <div class="pb-12">
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <footer class="fixed bottom-0 w-full bg-white">

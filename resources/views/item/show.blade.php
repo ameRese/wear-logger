@@ -77,7 +77,7 @@
                         <x-primary-button>着用日編集</x-primary-button>
                     </a>
                     <!-- カレンダーモーダル -->
-                    <dialog class="js-modal max-w-full p-1">
+                    <dialog class="js-modal max-w-full rounded-lg shadow-sm p-1">
                         <div class="text-center">
                             <div class="flex justify-between">
                                 <x-secondary-button id="js-previous-month">

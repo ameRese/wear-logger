@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input.js-date:checked + label {
+    background-color: #3b82f6;
+    color: white;
+}
