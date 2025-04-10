@@ -1,13 +1,3 @@
-// 兄弟ノードをクラス名で検索して最初に見つかった要素を返す
-const searchSiblingNode = (currentNode, className) => {
-    let sibling = currentNode.nextElementSibling;
-    while (sibling) {
-        if (sibling.className.includes(className)) { return sibling; }
-        sibling = sibling.nextElementSibling;
-    }
-    return null;
-}
-
 // 対象がモーダル背景またはキャンセルボタンの場合にモーダルを閉じる
 const closeModal = (e, modal) => {
     if (e.target === modal || e.target.className.includes('js-cancel')) {
@@ -16,20 +6,21 @@ const closeModal = (e, modal) => {
 };
 
 // 登録リスナー削除時のためにイベントリスナーの関数参照を保持
-const modalClickHandler = e => closeModal(e, e.currentTarget);
+const modalClickHandler = (e) => closeModal(e, e.currentTarget);
 
 // モーダルを開く
-const openModal = e => {
+const openModal = (e) => {
     e.preventDefault();
-    // クリックイベントの登録先を取得するためにtargetでなくcurrentTargetプロパティを使う
-    const modal = searchSiblingNode(e.currentTarget, 'js-modal');
+    // クリックイベントの登録要素を取得するためにtargetでなくcurrentTargetプロパティを使う
+    const modalId = e.currentTarget.getAttribute('data-modal-target');
+    const modal = document.getElementById(modalId);
     // クリックイベントが重複しないようにイベントリスナーを削除してから登録する
     modal.removeEventListener('click', modalClickHandler);
     modal.addEventListener('click', modalClickHandler);
     modal.showModal();
 };
 
-const links = document.querySelectorAll('.js-link');
+const links = document.querySelectorAll('[data-modal-target]');
 for (let link of links) {
-    link.addEventListener('click', e => openModal(e));
+    link.addEventListener('click', (e) => openModal(e));
 }

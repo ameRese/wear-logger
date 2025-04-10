@@ -14,7 +14,7 @@
             @foreach ($items as $item)
                 <div class="js-item border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                     @if ($showModal)
-                        <a href="#" class="js-link">
+                        <a href="#" data-modal-target="item-modal-{{ $item->id }}">
                     @endif
                         <div class="flex px-2 py-1">
                             <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
@@ -52,7 +52,8 @@
                     @endif
 
                     @if ($showModal)
-                        <dialog class="js-modal max-w-md p-4 rounded-lg shadow-lg w-full">
+                        <!-- アイテムモーダル -->
+                        <dialog id="item-modal-{{ $item->id }}" class="max-w-md p-4 rounded-lg shadow-lg w-full">
                             <div class="flex mb-3">
                                 <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
                                     alt="" width="90" height="120" class="object-contain">
