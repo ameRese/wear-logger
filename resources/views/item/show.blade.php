@@ -82,55 +82,58 @@
             </div>
         </div>
     </div>
-    <!-- カレンダーモーダル -->
-    <dialog id="calendar-modal" class="max-w-full rounded-lg shadow-sm p-1">
-        <div class="text-center">
-            <div class="flex justify-between">
-                <x-secondary-button id="js-previous-month">
-                    前月
-                </x-secondary-button>
-                <span id="js-calendar-header"></span>
-                <x-secondary-button id="js-next-month">
-                    次月
-                </x-secondary-button>
+
+    <x-slot name="modals">
+        <!-- カレンダーモーダル -->
+        <dialog id="calendar-modal" class="max-w-full rounded-lg shadow-sm p-1">
+            <div class="text-center">
+                <div class="flex justify-between">
+                    <x-secondary-button id="js-previous-month">
+                        前月
+                    </x-secondary-button>
+                    <span id="js-calendar-header"></span>
+                    <x-secondary-button id="js-next-month">
+                        次月
+                    </x-secondary-button>
+                </div>
+                <div class="flex justify-center text-center">
+                    <span class="flex-1 p-2">日</span>
+                    <span class="flex-1 p-2">月</span>
+                    <span class="flex-1 p-2">火</span>
+                    <span class="flex-1 p-2">水</span>
+                    <span class="flex-1 p-2">木</span>
+                    <span class="flex-1 p-2">金</span>
+                    <span class="flex-1 p-2">土</span>
+                </div>
+                <div id="js-calendar-body"></div>
+                <hr>
+                <div class="mt-1">
+                    <x-primary-button type="button" id="js-update">
+                        更新
+                    </x-primary-button>
+                    <x-primary-button type="button" class="js-cancel ml-2">
+                        キャンセル
+                    </x-primary-button>
+                </div>
             </div>
-            <div class="flex justify-center text-center">
-                <span class="flex-1 p-2">日</span>
-                <span class="flex-1 p-2">月</span>
-                <span class="flex-1 p-2">火</span>
-                <span class="flex-1 p-2">水</span>
-                <span class="flex-1 p-2">木</span>
-                <span class="flex-1 p-2">金</span>
-                <span class="flex-1 p-2">土</span>
+        </dialog>
+        <!-- 削除確認モーダル -->
+        <dialog id="delete-modal" class="max-w-full rounded-lg shadow-sm p-4">
+            <div class="text-center">
+                <p class="pb-4">本当に削除してよろしいですか？</p>
+                <div class="flex justify-center">
+                    <form method="post" action="{{ route('item.destroy', $item) }}">
+                        @csrf
+                        @method('delete')
+                        <x-primary-button class="bg-red-700">はい</x-primary-button>
+                    </form>
+                    <x-primary-button class="js-cancel ml-2">
+                        キャンセル
+                    </x-primary-button>
+                </div>
             </div>
-            <div id="js-calendar-body"></div>
-            <hr>
-            <div class="mt-1">
-                <x-primary-button type="button" id="js-update">
-                    更新
-                </x-primary-button>
-                <x-primary-button type="button" class="js-cancel ml-2">
-                    キャンセル
-                </x-primary-button>
-            </div>
-        </div>
-    </dialog>
-    <!-- 削除確認モーダル -->
-    <dialog id="delete-modal" class="max-w-full rounded-lg shadow-sm p-4">
-        <div class="text-center">
-            <p class="pb-4">本当に削除してよろしいですか？</p>
-            <div class="flex justify-center">
-                <form method="post" action="{{ route('item.destroy', $item) }}">
-                    @csrf
-                    @method('delete')
-                    <x-primary-button class="bg-red-700">はい</x-primary-button>
-                </form>
-                <x-primary-button class="js-cancel ml-2">
-                    キャンセル
-                </x-primary-button>
-            </div>
-        </div>
-    </dialog>
+        </dialog>
+    </x-slot>
 
     @vite(['resources/js/modules/modal.js', 'resources/js/modules/calendar.js'])
 </x-app-layout>

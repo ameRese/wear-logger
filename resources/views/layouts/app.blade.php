@@ -35,5 +35,10 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Modals -->
+        @isset($modals)
+            {{ $modals }}
+        @endisset
     </body>
 </html>
