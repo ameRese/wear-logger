@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            詳細表示
-        </h2>
+        <div class="flex items-center text-sm">
+            <a href="{{ route('item.index') }}" class="whitespace-nowrap">アイテム一覧</a>
+            <span class="mx-2">/</span>
+            <span class="truncate">{{ $item->name }}</span>
+            <span class="mx-2">/</span>
+        </div>
     </x-slot>
 
     <div class="py-4">
@@ -14,7 +17,6 @@
             @endif
 
             <div class="bg-white rounded-lg shadow-sm p-3">
-                <h1 class="text-xl font-semibold mb-3 text-center">{{ $item->name }}</h1>
                 <span class="hidden" id="js-item-id">{{ $item->id }}</span>
 
                 <div class="md:flex md:gap-8 md:items-start">
@@ -30,54 +32,64 @@
 
                     <!-- 右側：アイテム情報表示エリア -->
                     <div class="md:w-2/3">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-4">
                             <div>
-                                <p class="text-gray-700 font-medium mb-1">カテゴリー</p>
-                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->category->name }}</div>
+                                <p class="text-gray-700 font-medium mb-1">アイテム名</p>
+                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->name }}</div>
                             </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">カラー</p>
-                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->color->name }}</div>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">ブランド</p>
-                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->brand->name }}</div>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">シーズン</p>
-                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->season->name }}</div>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">購入価格</p>
-                                <div class="p-2 border rounded-md bg-gray-50">
-                                    {{ $item->price ? '¥'.number_format($item->price) : '未設定' }}
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">カテゴリー</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->category->name }}</div>
                                 </div>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">購入日</p>
-                                <div class="p-2 border rounded-md bg-gray-50">
-                                    {{ $item->purchase_date ?: '未設定' }}
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">カラー</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->color->name }}</div>
                                 </div>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 font-medium mb-1">登録前の着用日数</p>
-                                <div class="p-2 border rounded-md bg-gray-50">
-                                    {{ $item->pre_regist_wear_count ?: '0' }}
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">ブランド</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->brand->name }}</div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">シーズン</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->season->name }}</div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">購入価格</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">
+                                        {{ $item->price ? '¥'.number_format($item->price) : '未設定' }}
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">購入日</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">
+                                        {{ $item->purchase_date ?: '未設定' }}
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 font-medium mb-1">登録前の着用日数</p>
+                                    <div class="p-2 border rounded-md bg-gray-50">
+                                        {{ $item->pre_regist_wear_count ?: '0' }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-6 text-center">
-                    <a href="{{ route('item.edit', $item) }}">
-                        <x-primary-button>アイテム編集</x-primary-button>
-                    </a>
-                    <a href="#" data-modal-target="calendar-modal">
-                        <x-primary-button>着用日編集</x-primary-button>
-                    </a>
-                    <a href="#" data-modal-target="delete-modal">
-                        <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
-                    </a>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="{{ route('item.edit', $item) }}">
+                            <x-primary-button>アイテム編集</x-primary-button>
+                        </a>
+                        <a href="#" data-modal-target="calendar-modal">
+                            <x-primary-button>着用日編集</x-primary-button>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" data-modal-target="delete-modal">
+                            <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

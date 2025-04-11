@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            着用回数ランキング
-        </h2>
+        <div class="flex items-center text-sm">
+            <a href="{{ route('stat.index') }}" class="whitespace-nowrap">統計情報</a>
+            <span class="mx-2">/</span>
+            <span class="truncate">着用回数ランキング</span>
+        </div>
     </x-slot>
     <x-item-list :items="$wearCountSortedItems" :showModal="false" />
 </x-app-layout>

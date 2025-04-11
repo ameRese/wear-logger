@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            統計情報
-        </h2>
+        <div class="flex items-center text-sm">
+            <span>統計情報</span>
+            <span class="mx-2">/</span>
+        </div>
     </x-slot>
 
     <div class="py-4">

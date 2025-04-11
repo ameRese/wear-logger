@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            一覧表示
-        </h2>
+        <div class="flex items-center text-sm">
+            <span>アイテム一覧</span>
+            <span class="mx-2">/</span>
+        </div>
     </x-slot>
     <div class="pb-12">
         <x-item-list :items="$items" :showModal="true" />

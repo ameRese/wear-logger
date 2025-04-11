@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            未使用アイテム
-        </h2>
+        <div class="flex items-center text-sm">
+            <a href="{{ route('stat.index') }}" class="whitespace-nowrap">統計情報</a>
+            <span class="mx-2">/</span>
+            <span class="truncate">未使用アイテムリスト</span>
+        </div>
     </x-slot>
     <x-item-list :items="$unusedItems" :showModal="false" />
 </x-app-layout>

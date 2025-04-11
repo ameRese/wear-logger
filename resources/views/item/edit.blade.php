@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            アイテム編集
-        </h2>
+        <div class="flex items-center text-sm">
+            <a href="{{ route('item.index') }}" class="whitespace-nowrap">アイテム一覧</a>
+            <span class="mx-2">/</span>
+            <a href="{{ route('item.show', $item) }}" class="truncate">{{ $item->name }}</a>
+            <span class="mx-2">/</span>
+            <span class="whitespace-nowrap">編集</span>
+        </div>
     </x-slot>
 
     <div class="py-4">
