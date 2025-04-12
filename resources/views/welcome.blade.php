@@ -31,15 +31,21 @@
                         <x-application-logo />
                         <div class="space-x-2">
                             @auth
-                                <a href="{{ route('dashboard') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition">
-                                    ダッシュボード
+                                <a href="{{ route('dashboard') }}">
+                                    <x-primary-button>
+                                        ダッシュボード
+                                    </x-primary-button>
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
-                                    ログイン
+                                <a href="{{ route('login') }}">
+                                    <x-secondary-button>
+                                        ログイン
+                                    </x-secondary-button>
                                 </a>
-                                <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition">
-                                    新規登録
+                                <a href="{{ route('register') }}">
+                                    <x-primary-button>
+                                        登録
+                                    </x-primary-button>
                                 </a>
                             @endauth
                         </div>
@@ -58,14 +64,16 @@
                                     <span class="block">手持ちの服の</span>
                                     <span class="block text-indigo-600">着用記録を管理</span>
                                 </h1>
-                                <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg">
+                                <p class="mt-3 text-base text-gray-500 sm:mt-5">
                                     Worn!は、あなたの洋服の着用状況を簡単に記録・管理できるサービスです。
                                     どの服をいつ着たか、どれだけ活用しているかを可視化して、より効率的なワードローブ管理をサポートします。
                                 </p>
                                 <div class="mt-8 sm:mt-10">
-                                    <a href="{{ route('register') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg">
-                                        今すぐ始める
-                                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                                    <a href="{{ route('register') }}">
+                                        <x-primary-button class="px-6 py-3 md:text-xl">
+                                            今すぐ始める
+                                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                                        </x-primary-button>
                                     </a>
                                 </div>
                             </div>
@@ -85,14 +93,12 @@
                             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                                 Worn!の特徴
                             </h2>
-                            <p class="mt-4 text-lg text-gray-500">
+                            <p class="mt-4 text-xl text-gray-500">
                                 効率的なワードローブ管理をサポートする機能を提供します
                             </p>
                         </div>
-
                         <div class="mt-10">
                             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                                <!-- 特徴1 -->
                                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
                                     <div class="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-500 text-white mb-4">
                                         <i class="fa-solid fa-calendar-check"></i>
@@ -102,8 +108,6 @@
                                         洋服の着用日をカレンダーで簡単に記録・管理できます。
                                     </p>
                                 </div>
-
-                                <!-- 特徴2 -->
                                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
                                     <div class="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-500 text-white mb-4">
                                         <i class="fa-solid fa-chart-bar"></i>
@@ -113,8 +117,6 @@
                                         どの服を頻繁に着ているか、どの服が使われていないかがわかります。
                                     </p>
                                 </div>
-
-                                <!-- 特徴3 -->
                                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
                                     <div class="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-500 text-white mb-4">
                                         <i class="fa-solid fa-tags"></i>
@@ -135,15 +137,19 @@
                         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                             今すぐWorn!を始めましょう
                         </h2>
-                        <p class="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+                        <p class="mt-4 text-base text-gray-500 max-w-3xl mx-auto">
                             登録は無料で、たった1分で完了します。あなたの洋服ライフをもっと楽しく、もっと効率的に。
                         </p>
                         <div class="mt-8">
-                            <a href="{{ route('register') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg">
-                                無料アカウント登録
+                            <a href="{{ route('login') }}">
+                                <x-secondary-button class="px-6 py-3 md:text-xl">
+                                    ログイン
+                                </x-secondary-button>
                             </a>
-                            <a href="{{ route('login') }}" class="ml-4 inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 md:text-lg">
-                                ログイン
+                            <a href="{{ route('register') }}" class="ml-4">
+                                <x-primary-button class="px-6 py-3 md:text-xl">
+                                    登録
+                                </x-primary-button>
                             </a>
                         </div>
                     </div>

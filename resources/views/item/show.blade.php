@@ -103,7 +103,7 @@
                     <x-secondary-button id="js-previous-month">
                         前月
                     </x-secondary-button>
-                    <span id="js-calendar-header"></span>
+                    <span id="js-calendar-header" class="flex items-center font-semibold"></span>
                     <x-secondary-button id="js-next-month">
                         次月
                     </x-secondary-button>
@@ -123,9 +123,9 @@
                     <x-primary-button type="button" id="js-update">
                         更新
                     </x-primary-button>
-                    <x-primary-button type="button" class="js-cancel ml-2">
+                    <x-secondary-button type="button" class="js-cancel ml-2">
                         キャンセル
-                    </x-primary-button>
+                    </x-secondary-button>
                 </div>
             </div>
         </dialog>

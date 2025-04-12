@@ -8,14 +8,15 @@
     <div class="pb-12">
         <x-item-list :items="$items" :showModal="true" />
     </div>
-    <footer class="fixed bottom-0 w-full bg-white">
-        <hr>
-        <div class="flex justify-center m-1">
-            <a href="{{ route('item.create') }}">
-                <x-primary-button>アイテム登録</x-primary-button>
-            </a>
-            {{-- <x-secondary-button class="ml-2">複数選択</x-secondary-button> --}}
+    <x-slot name="footer">
+        <div class="fixed bottom-0 w-full bg-white">
+            <hr>
+            <div class="flex justify-center my-2">
+                <a href="{{ route('item.create') }}">
+                    <x-primary-button>アイテム登録</x-primary-button>
+                </a>
+                {{-- <x-secondary-button class="ml-4">複数選択</x-secondary-button> --}}
+            </div>
         </div>
-    </footer>
-    @vite(['resources/js/modules/search.js', 'resources/js/modules/modal.js'])
+    </x-slot>
 </x-app-layout>

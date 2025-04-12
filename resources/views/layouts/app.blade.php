@@ -33,6 +33,13 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- Page Footing -->
+            @isset($footer)
+                <footer>
+                    {{ $footer }}
+                </footer>
+            @endisset
         </div>
 
         <!-- Modals -->
