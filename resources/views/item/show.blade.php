@@ -34,41 +34,41 @@
                     <div class="md:w-2/3">
                         <div class="space-y-4">
                             <div>
-                                <p class="text-gray-700 font-medium mb-1">アイテム名</p>
-                                <div class="p-2 border rounded-md bg-gray-50">{{ $item->name }}</div>
+                                <p class="text-gray-700 font-medium">アイテム名</p>
+                                <div class="mt-1 p-2 border rounded-md bg-gray-50">{{ $item->name }}</div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">カテゴリー</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->category->name }}</div>
+                                    <p class="text-gray-700 font-medium">カテゴリー</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">{{ $item->category->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">カラー</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->color->name }}</div>
+                                    <p class="text-gray-700 font-medium">カラー</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">{{ $item->color->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">ブランド</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->brand->name }}</div>
+                                    <p class="text-gray-700 font-medium">ブランド</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">{{ $item->brand->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">シーズン</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">{{ $item->season->name }}</div>
+                                    <p class="text-gray-700 font-medium">シーズン</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">{{ $item->season->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">購入価格</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">
+                                    <p class="text-gray-700 font-medium">購入価格</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">
                                         {{ $item->price ? '¥'.number_format($item->price) : '未設定' }}
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">購入日</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">
+                                    <p class="text-gray-700 font-medium">購入日</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">
                                         {{ $item->purchase_date ?: '未設定' }}
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-gray-700 font-medium mb-1">登録前の着用日数</p>
-                                    <div class="p-2 border rounded-md bg-gray-50">
+                                    <p class="text-gray-700 font-medium">登録前の着用日数</p>
+                                    <div class="mt-1 p-2 border rounded-md bg-gray-50">
                                         {{ $item->pre_regist_wear_count ?: '0' }}
                                     </div>
                                 </div>

@@ -32,14 +32,18 @@
             <div class="md:w-2/3">
                 <div class="space-y-4">
                     <div>
-                        <label for="item" class="block text-gray-700 font-medium mb-1">アイテム名 <span class="text-red-500">*</span></label>
-                        <input type="text" name="name" id="item" placeholder="必須" 
-                            class="w-full p-2 border rounded-md" value="{{ old('name', $item?->name) }}">
+                        <x-input-label for="item">
+                            アイテム名 <span class="text-red-500">*</span>
+                        </x-input-label>
+                        <x-text-input type="text" name="name" id="item" placeholder="必須" 
+                            class="block mt-1 w-full" value="{{ old('name', $item?->name) }}" />
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="category" class="block text-gray-700 font-medium mb-1">カテゴリー <span class="text-red-500">*</span></label>
-                            <select name="category_id" id="category" class="w-full p-2 border rounded-md">
+                            <x-input-label for="category">
+                                カテゴリー <span class="text-red-500">*</span>
+                            </x-input-label>
+                            <select name="category_id" id="category" class="mt-1 w-full border rounded-md">
                                 <option value="">選択してください</option>
                                 @if($item)
                                     <option value="{{ $item->category->id }}" selected>{{ $item->category->name }}</option>
@@ -52,8 +56,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="color" class="block text-gray-700 font-medium mb-1">カラー <span class="text-red-500">*</span></label>
-                            <select name="color_id" id="color" class="w-full p-2 border rounded-md">   
+                            <x-input-label for="color">
+                                カラー <span class="text-red-500">*</span>
+                            </x-input-label>
+                            <select name="color_id" id="color" class="mt-1 w-full p-2 border rounded-md">   
                                 <option value="">選択してください</option>
                                 @if($item)
                                     <option value="{{ $item->color->id }}" selected>{{ $item->color->name }}</option>
@@ -66,8 +72,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="brand" class="block text-gray-700 font-medium mb-1">ブランド <span class="text-red-500">*</span></label>
-                            <select name="brand_id" id="brand" class="w-full p-2 border rounded-md">   
+                            <x-input-label for="brand">
+                                ブランド <span class="text-red-500">*</span>
+                            </x-input-label>
+                            <select name="brand_id" id="brand" class="mt-1 w-full p-2 border rounded-md">   
                                 <option value="">選択してください</option>
                                 @if($item)
                                     <option value="{{ $item->brand->id }}" selected>{{ $item->brand->name }}</option>
@@ -80,8 +88,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="season" class="block text-gray-700 font-medium mb-1">シーズン <span class="text-red-500">*</span></label>
-                            <select name="season_id" id="season" class="w-full p-2 border rounded-md">  
+                            <x-input-label for="season">
+                                シーズン <span class="text-red-500">*</span>
+                            </x-input-label>
+                            <select name="season_id" id="season" class="mt-1 w-full p-2 border rounded-md">  
                                 <option value="">選択してください</option>
                                 @if($item)
                                     <option value="{{ $item->season->id }}" selected>{{ $item->season->name }}</option>
@@ -94,19 +104,19 @@
                             </select>
                         </div>
                         <div>
-                            <label for="price" class="block text-gray-700 font-medium mb-1">購入価格</label>
-                            <input type="number" name="price" id="price" placeholder="オプション" 
-                                class="w-full p-2 border rounded-md" value="{{ old('price', $item?->price) }}">
+                            <x-input-label for="price" value="購入価格" />
+                            <x-text-input type="number" name="price" id="price" placeholder="オプション" 
+                                class="block mt-1 w-full" value="{{ old('price', $item?->price) }}" />
                         </div>
                         <div>
-                            <label for="purchase-date" class="block text-gray-700 font-medium mb-1">購入日</label>
-                            <input type="date" name="purchase_date" id="purchase-date" placeholder="オプション" 
-                                class="w-full p-2 border rounded-md" value="{{ old('purchase_date', $item?->purchase_date) }}">
+                            <x-input-label for="purchase-date" value="購入日" />
+                            <x-text-input type="date" name="purchase_date" id="purchase-date" placeholder="オプション" 
+                                class="block mt-1 w-full" value="{{ old('purchase_date', $item?->purchase_date) }}" />
                         </div>
                         <div>
-                            <label for="pre-regist-wear-count" class="block text-gray-700 font-medium mb-1">登録前の着用日数</label>
-                            <input type="number" name="pre_regist_wear_count" id="pre-regist-wear-count" placeholder="オプション" 
-                                class="w-full p-2 border rounded-md" value="{{ old('pre_regist_wear_count', $item?->pre_regist_wear_count) }}">
+                            <x-input-label for="pre-regist-wear-count" value="登録前の着用日数" />
+                            <x-text-input type="number" name="pre_regist_wear_count" id="pre-regist-wear-count" placeholder="オプション" 
+                                class="block mt-1 w-full" value="{{ old('pre_regist_wear_count', $item?->pre_regist_wear_count) }}" />
                         </div>
                     </div>
                 </div>
