@@ -87,7 +87,7 @@
                     </div>
                     <div>
                         <a href="#" data-modal-target="delete-modal">
-                            <x-primary-button class="bg-red-700">アイテムを削除</x-primary-button>
+                            <x-danger-button>アイテムを削除</x-danger-button>
                         </a>
                     </div>
                 </div>
@@ -137,11 +137,11 @@
                     <form method="post" action="{{ route('item.destroy', $item) }}">
                         @csrf
                         @method('delete')
-                        <x-primary-button class="bg-red-700">はい</x-primary-button>
+                        <x-danger-button>はい</x-danger-button>
                     </form>
-                    <x-primary-button class="js-cancel ml-2">
+                    <x-secondary-button class="js-cancel ml-2">
                         キャンセル
-                    </x-primary-button>
+                    </x-secondary-button>
                 </div>
             </div>
         </dialog>
