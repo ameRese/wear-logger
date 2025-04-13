@@ -1,12 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center text-sm">
-            <a href="{{ route('item.index') }}" class="whitespace-nowrap">アイテム一覧</a>
-            <span class="mx-2">/</span>
-            <a href="{{ route('item.show', $item) }}" class="truncate">{{ $item->name }}</a>
-            <span class="mx-2">/</span>
-            <span class="whitespace-nowrap">編集</span>
-        </div>
+        <x-breadcrumb :pages="[
+            ['name' => 'アイテム一覧', 'url' => route('item.index')],
+            ['name' => $item->name, 'url' => route('item.show', $item)],
+            ['name' => '編集', 'url' => route('item.edit', $item)],
+        ]" />
     </x-slot>
 
     <div class="py-4">

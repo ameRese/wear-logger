@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center text-sm">
-            <span>アイテム登録</span>
-        </div>
+        <x-breadcrumb :pages="[
+            ['name' => 'アイテム登録', 'url' => route('item.create')],
+        ]" />
     </x-slot>
 
     <div class="py-4">

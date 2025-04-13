@@ -1,9 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center text-sm">
-            <span>統計情報</span>
-            <span class="mx-2">/</span>
-        </div>
+        <x-breadcrumb :pages="[
+            ['name' => '統計情報', 'url' => route('stat.index')],
+        ]" />
     </x-slot>
 
     <div class="py-4">

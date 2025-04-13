@@ -17,7 +17,7 @@
             <!-- 画像アップロードエリア -->
             <div class="md:w-1/3 mb-4 md:mb-0">
                 <div class="text-center">
-                    <label class="block text-gray-700 font-medium">
+                    <label>
                         <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:bg-gray-50 transition cursor-pointer">
                             <img src="{{ $item?->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
                                 alt="" class="mx-auto mb-2 max-h-60 object-contain" id="preview-image">

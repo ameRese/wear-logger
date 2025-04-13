@@ -1,9 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center text-sm">
-            <span>アイテム一覧</span>
-            <span class="mx-2">/</span>
-        </div>
+        <x-breadcrumb :pages="[
+            ['name' => 'アイテム一覧', 'url' => route('item.index')],
+        ]" />
     </x-slot>
     <div class="pb-14">
         <x-item-list :items="$items" :showModal="true" />

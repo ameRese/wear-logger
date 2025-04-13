@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center text-sm">
-            {{ __('Profile') }}
-        </div>
+        <x-breadcrumb :pages="[
+            ['name' => __('Profile'), 'url' => route('profile.edit')],
+        ]" />
     </x-slot>
 
     <div class="py-4">
