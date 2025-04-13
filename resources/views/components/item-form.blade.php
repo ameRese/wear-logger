@@ -43,65 +43,49 @@
                             <x-input-label for="category">
                                 カテゴリー <span class="text-red-500">*</span>
                             </x-input-label>
-                            <select name="category_id" id="category" class="mt-1 w-full border rounded-md">
-                                <option value="">選択してください</option>
-                                @if($item)
-                                    <option value="{{ $item->category->id }}" selected>{{ $item->category->name }}</option>
-                                @endif
-                                @foreach ($categories as $category)
-                                    @if(!$item || $item->category->id !== $category->id)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <x-select-menu
+                                name="category_id"
+                                id="category"
+                                class="mt-1 w-full"
+                                :options="$categories"
+                                :selected="$item?->category->id"
+                            />
                         </div>
                         <div>
                             <x-input-label for="color">
                                 カラー <span class="text-red-500">*</span>
                             </x-input-label>
-                            <select name="color_id" id="color" class="mt-1 w-full p-2 border rounded-md">   
-                                <option value="">選択してください</option>
-                                @if($item)
-                                    <option value="{{ $item->color->id }}" selected>{{ $item->color->name }}</option>
-                                @endif
-                                @foreach ($colors as $color)
-                                    @if(!$item || $item->color->id !== $color->id)
-                                        <option value="{{ $color->id }}">{{ $color->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <x-select-menu
+                                name="color_id"
+                                id="color"
+                                class="mt-1 w-full"
+                                :options="$colors"
+                                :selected="$item?->color->id"
+                            />
                         </div>
                         <div>
                             <x-input-label for="brand">
                                 ブランド <span class="text-red-500">*</span>
                             </x-input-label>
-                            <select name="brand_id" id="brand" class="mt-1 w-full p-2 border rounded-md">   
-                                <option value="">選択してください</option>
-                                @if($item)
-                                    <option value="{{ $item->brand->id }}" selected>{{ $item->brand->name }}</option>
-                                @endif
-                                @foreach ($brands as $brand)
-                                    @if(!$item || $item->brand->id !== $brand->id)
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <x-select-menu
+                                name="brand_id"
+                                id="brand"
+                                class="mt-1 w-full"
+                                :options="$brands"
+                                :selected="$item?->brand->id"
+                            />
                         </div>
                         <div>
                             <x-input-label for="season">
                                 シーズン <span class="text-red-500">*</span>
                             </x-input-label>
-                            <select name="season_id" id="season" class="mt-1 w-full p-2 border rounded-md">  
-                                <option value="">選択してください</option>
-                                @if($item)
-                                    <option value="{{ $item->season->id }}" selected>{{ $item->season->name }}</option>
-                                @endif
-                                @foreach ($seasons as $season)
-                                    @if(!$item || $item->season->id !== $season->id)
-                                        <option value="{{ $season->id }}">{{ $season->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <x-select-menu
+                                name="season_id"
+                                id="season"
+                                class="mt-1 w-full"
+                                :options="$seasons"
+                                :selected="$item?->season->id"
+                            />
                         </div>
                         <div>
                             <x-input-label for="price" value="購入価格" />
