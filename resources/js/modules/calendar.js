@@ -48,7 +48,7 @@ const getDateElement = (calDate, inputId, baseMonth) => {
 
     const label = document.createElement('label');
     label.setAttribute('for', `checkbox${inputId}`);
-    // チェック時のスタイルはapp.cssで指定
+    // チェック時のスタイルのみapp.cssで指定
     label.classList.add(
         'cursor-pointer',
         'rounded-full',
@@ -78,7 +78,7 @@ const generateCalendar = (baseDate) => {
     const monthlyCalendar = document.createDocumentFragment();
     for (let i = 0; i < calWeekCount; i++) {
         const week = document.createElement('div');
-        week.classList.add('flex', 'justify-center', 'text-center');
+        week.classList.add('flex');
         for (let j = 0; j < 7; j++) {
             const date = getDateElement(calDate, idCount, baseDate.getMonth());
             week.append(date);

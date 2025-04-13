@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 input.js-date:checked + label {
-    background-color: #3b82f6;
+    background-color: #4f46e5;
     color: white;
 }

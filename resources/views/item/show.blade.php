@@ -95,16 +95,16 @@
 
     <x-slot name="modals">
         <!-- カレンダーモーダル -->
-        <dialog id="calendar-modal" class="max-w-full rounded-lg shadow-sm p-1">
+        <dialog id="calendar-modal" class="max-w-full rounded-lg shadow-sm p-2">
             <div class="text-center">
-                <div class="flex justify-between">
-                    <x-secondary-button id="js-previous-month">
-                        前月
-                    </x-secondary-button>
+                <div class="flex justify-around">
+                    <button type="button" id="js-previous-month" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 aria-label="Previous">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
                     <span id="js-calendar-header" class="flex items-center font-semibold"></span>
-                    <x-secondary-button id="js-next-month">
-                        次月
-                    </x-secondary-button>
+                    <button type="button" id="js-next-month" class=" size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100" aria-label="Next">
+                        <svg class="shrink-0 size-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
                 </div>
                 <div class="flex justify-center text-center">
                     <span class="flex-1 p-2">日</span>
@@ -117,7 +117,7 @@
                 </div>
                 <div id="js-calendar-body"></div>
                 <hr>
-                <div class="mt-1">
+                <div class="mt-2">
                     <x-primary-button type="button" id="js-update">
                         更新
                     </x-primary-button>
