@@ -9,7 +9,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="border rounded-lg m-2 p-1 min-w-80">
+        <x-text-input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="my-2 w-full" />
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
             @foreach ($items as $item)
                 <div class="js-item border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">

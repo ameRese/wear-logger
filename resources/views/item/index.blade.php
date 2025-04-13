@@ -5,7 +5,7 @@
             <span class="mx-2">/</span>
         </div>
     </x-slot>
-    <div class="pb-12">
+    <div class="pb-14">
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <x-slot name="footer">
