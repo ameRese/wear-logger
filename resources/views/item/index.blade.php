@@ -4,7 +4,7 @@
             ['name' => 'アイテム一覧', 'url' => route('item.index')],
         ]" />
     </x-slot>
-    <div class="pb-14">
+    <div class="pb-16">
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <x-slot name="footer">
