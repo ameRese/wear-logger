@@ -65,7 +65,7 @@
                                     <span class="block text-indigo-600">着用記録を管理</span>
                                 </h1>
                                 <p class="mt-3 text-base text-gray-500 sm:mt-5">
-                                    Worn!は、あなたの洋服の着用状況を簡単に記録・管理できるサービスです。
+                                    Worn! は、あなたの洋服の着用状況を簡単に記録・管理できるサービスです。
                                     どの服をいつ着たか、どれだけ活用しているかを可視化して、より効率的なワードローブ管理をサポートします。
                                 </p>
                                 <div class="mt-8 sm:mt-10">
@@ -91,7 +91,7 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="text-center">
                             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                                Worn!の特徴
+                                Worn! の特徴
                             </h2>
                             <p class="mt-4 text-xl text-gray-500">
                                 効率的なワードローブ管理をサポートする機能を提供します
@@ -135,7 +135,7 @@
                 <section class="py-12 bg-indigo-50">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                            今すぐWorn!を始めましょう
+                            今すぐ Worn! を始めましょう
                         </h2>
                         <p class="mt-4 text-base text-gray-500 max-w-3xl mx-auto">
                             登録は無料で、たった1分で完了します。あなたの洋服ライフをもっと楽しく、もっと効率的に。

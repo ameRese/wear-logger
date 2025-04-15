@@ -5,6 +5,11 @@
         ]" />
     </x-slot>
     <div class="pb-16">
+        @if (session('message'))
+            <div class="text-red-600 font-bold m-2">
+                {{ session('message') }}
+            </div>
+        @endif
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <x-slot name="footer">

@@ -6,8 +6,12 @@ const searchDescendantNode = (currentNode, className) => {
     for (let child of children) {
         // 再帰的に子ノードを検索
         const result = searchDescendantNode(child, className);
-        if (result) { return result; }
-        if (child.className.includes(className)) { return child; }
+        if (result) {
+            return result;
+        }
+        if (child.className.includes(className)) {
+            return child;
+        }
     }
     // 対象がない場合はnullを返す
     return null;
@@ -22,26 +26,30 @@ const generateItemDictionary = () => {
         const brand = searchDescendantNode(item, 'js-brand');
         const name = searchDescendantNode(item, 'js-name');
         itemDictionary.push({
-            'item': item,
-            'category': category.textContent,
-            'brand': brand.textContent,
-            'name': name.textContent,
-        })
+            item: item,
+            category: category.textContent,
+            brand: brand.textContent,
+            name: name.textContent,
+        });
     }
 };
 
 // インクリメンタルサーチ
-const searchIncrementally = inputText => {
-    itemDictionary.forEach(entry => {
-        if (entry.category.includes(inputText) ||
+const searchIncrementally = (inputText) => {
+    itemDictionary.forEach((entry) => {
+        if (
+            entry.category.includes(inputText) ||
             entry.brand.includes(inputText) ||
-            entry.name.includes(inputText)) {
-                entry.item.classList.remove('hidden');
-            } else {
-                entry.item.classList.add('hidden');
-            }
+            entry.name.includes(inputText)
+        ) {
+            entry.item.classList.remove('hidden');
+        } else {
+            entry.item.classList.add('hidden');
+        }
     });
 };
 
 document.addEventListener('DOMContentLoaded', generateItemDictionary);
-document.getElementById('js-search').addEventListener('input', e => searchIncrementally(e.target.value));
+document
+    .getElementById('js-search')
+    .addEventListener('input', (e) => searchIncrementally(e.target.value));

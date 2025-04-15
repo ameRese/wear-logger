@@ -1,23 +1,19 @@
 @props(['items', 'showModal' => false])
 
-<div class="max-w-2xl mx-auto px-2 text-center">
+<div class="container mx-auto px-2 text-center">
     @if ($items->isEmpty())
-        <p>アイテムはありません。</p>
+        <p class="py-4">アイテムはありません。</p>
     @else
-        @if (session('message'))
-            <div class="text-red-600 font-bold">
-                {{ session('message') }}
-            </div>
-        @endif
         <x-text-input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="my-2 w-full" />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 pb-2">
             @foreach ($items as $item)
                 <!-- アイテムカード -->
-                <div class="js-item px-2 py-1 border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="js-item">
                     @if ($showModal)
                         <a href="#" data-modal-target="item-modal-{{ $item->id }}">
                     @endif
-                        <x-item-card :item="$item" :enableSearch="true" />
+                        <x-item-card class="{{ $item->isWearedToday() ? 'border-t-4 border-t-indigo-600' : '' }}"
+                            :item="$item" :enableSearch="true" />
                     @if ($showModal)
                         </a>
                     @endif
@@ -32,10 +28,9 @@
         <div>
             @foreach ($items as $item)
             <!-- アイテムモーダル -->
-                <dialog id="item-modal-{{ $item->id }}" class="max-w-md p-4 rounded-lg shadow-lg w-full">
+                <dialog id="item-modal-{{ $item->id }}" class="p-2 w-full max-w-md rounded-lg">
                     <x-item-card :item="$item" />
-                    <hr class="my-2">
-                    <div class="flex justify-center gap-2 mt-3">
+                    <div class="mt-2 flex justify-center gap-4">
                         @if ($item->isWearedToday())
                         <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
                             @csrf
@@ -49,7 +44,7 @@
                             </form>
                         @endif
                         <a href="{{ route('item.show', $item) }}">
-                            <x-primary-button class="ml-2">アイテム詳細</x-primary-button>
+                            <x-primary-button>アイテム詳細</x-primary-button>
                         </a>
                     </div>
                 </dialog>
