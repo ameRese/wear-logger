@@ -6,21 +6,22 @@
         ]" />
     </x-slot>
 
-    <div class="py-4">
-        <div class="max-w-2xl mx-auto px-2">
+    <div class="px-2 py-4">
+        <div class="max-w-2xl mx-auto">
             @if (session('message'))
                 <div class="text-red-600 font-bold my-2">
                     {{ session('message') }}
                 </div>
             @endif
 
-            <div class="bg-white rounded-lg shadow-sm p-3">
+            <div class="bg-white rounded-lg shadow-sm p-4">
                 <span class="hidden" id="js-item-id">{{ $item->id }}</span>
 
                 <div class="md:flex md:gap-8 md:items-start">
                     <!-- 左側：画像表示エリア -->
                     <div class="md:w-1/3 mb-4 md:mb-0">
                         <div class="text-center">
+                            <span class="hidden md:block mb-1 font-medium text-gray-700 text-left">アイテム画像</span>
                             <div class="border-2 border-gray-200 rounded-lg p-3 bg-gray-50">
                                 <img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
                                     alt="" class="mx-auto max-h-60 object-contain">
@@ -74,8 +75,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-6 text-center">
-                    <div class="flex justify-center space-x-4 mb-4">
+                <div class="mt-4 text-center">
+                    <div class="flex justify-center space-x-4">
                         <a href="{{ route('item.edit', $item) }}">
                             <x-primary-button>アイテム編集</x-primary-button>
                         </a>
@@ -83,7 +84,7 @@
                             <x-primary-button>着用日編集</x-primary-button>
                         </a>
                     </div>
-                    <div>
+                    <div class="mt-4">
                         <a href="#" data-modal-target="delete-modal">
                             <x-danger-button>アイテムを削除</x-danger-button>
                         </a>

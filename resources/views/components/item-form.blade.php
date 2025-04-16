@@ -1,13 +1,13 @@
 @props(['item' => null, 'categories', 'colors', 'brands', 'seasons', 'buttonText', 'route', 'method' => 'post'])
 
-<div class="max-w-2xl mx-auto px-2">
+<div class="max-w-2xl mx-auto">
     @if (session('message'))
-        <div class="text-red-600 font-bold my-2">
+        <div class="text-red-600 font-bold my-4">
             {{ session('message') }}
         </div>
     @endif
 
-    <form method="post" action="{{ $route }}" class="mx-auto p-3 bg-white rounded-lg shadow-sm" enctype="multipart/form-data">
+    <form method="post" action="{{ $route }}" class="mx-auto p-4 bg-white rounded-lg shadow-sm" enctype="multipart/form-data">
         @csrf
         @if($method === 'patch')
             @method('patch')
@@ -18,9 +18,10 @@
             <div class="md:w-1/3 mb-4 md:mb-0">
                 <div class="text-center">
                     <label>
+                        <span class="hidden md:block mb-1 font-medium text-gray-700 text-left">アイテム画像</span>
                         <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:bg-gray-50 transition cursor-pointer">
                             <img src="{{ $item?->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
-                                alt="" class="mx-auto mb-2 max-h-60 object-contain" id="preview-image">
+                                alt="" class="mx-auto mb-2 max-h-60 object-contain">
                             <p class="text-sm text-gray-500">クリックして画像をアップロード</p>
                             <input type="file" name="image" class="hidden" accept="image/png, image/jpeg">
                         </div>
@@ -111,8 +112,8 @@
             <x-input-error :messages="$error" class="mt-2"></x-input-error>
         @endforeach
 
-        <div class="mt-6 text-center">
-            <x-primary-button class="px-6 py-2">
+        <div class="mt-4 text-center">
+            <x-primary-button class="px-6">
                 {{ $buttonText }}
             </x-primary-button>
         </div>

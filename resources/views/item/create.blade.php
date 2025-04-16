@@ -5,7 +5,7 @@
         ]" />
     </x-slot>
 
-    <div class="py-4">
+    <div class="px-2 py-4">
         <x-item-form
             :categories="$categories"
             :colors="$colors"
