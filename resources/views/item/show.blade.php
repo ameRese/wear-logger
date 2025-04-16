@@ -96,7 +96,7 @@
 
     <x-slot name="modals">
         <!-- カレンダーモーダル -->
-        <dialog id="calendar-modal" class="max-w-full rounded-lg shadow-sm p-2">
+        <dialog id="calendar-modal" class="p-2 w-full max-w-md rounded-lg">
             <div class="text-center">
                 <div class="flex justify-around">
                     <button type="button" id="js-previous-month" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 aria-label="Previous">

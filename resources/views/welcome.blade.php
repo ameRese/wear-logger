@@ -56,49 +56,45 @@
             <!-- メインコンテンツ -->
             <main class="flex-grow">
                 <!-- ヒーローセクション -->
-                <section class="py-12 sm:py-16 bg-gradient-to-b from-indigo-50 to-white">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-                            <div class="text-center lg:text-left">
-                                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                                    <span class="block">手持ちの服の</span>
-                                    <span class="block text-indigo-600">着用記録を管理</span>
-                                </h1>
-                                <p class="mt-3 text-base text-gray-500 sm:mt-5">
-                                    Worn! は、あなたの洋服の着用状況を簡単に記録・管理できるサービスです。
-                                    どの服をいつ着たか、どれだけ活用しているかを可視化して、より効率的なワードローブ管理をサポートします。
-                                </p>
-                                <div class="mt-8 sm:mt-10">
-                                    <a href="{{ route('register') }}">
-                                        <x-primary-button class="px-6 py-3 md:text-xl">
-                                            今すぐ始める
-                                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                                        </x-primary-button>
-                                    </a>
-                                </div>
+                <section class="py-10 bg-gradient-to-b from-indigo-50 to-white">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 md:grid md:grid-cols-2 md:gap-8 items-center">
+                        <div class="text-center md:text-left">
+                            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                                <span class="block">手持ちの服の</span>
+                                <span class="block text-indigo-600">着用記録を管理</span>
+                            </h1>
+                            <p class="mt-4 text-gray-600">
+                                Worn! は、あなたの洋服の着用状況を簡単に記録・管理できるサービスです。
+                                どの服をいつ着たか、どれだけ活用しているかを可視化して、より効率的なワードローブ管理をサポートします。
+                            </p>
+                            <div class="mt-8">
+                                <a href="{{ route('register') }}">
+                                    <x-primary-button class="px-6 py-3 md:text-xl">
+                                        今すぐ始める
+                                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                                    </x-primary-button>
+                                </a>
                             </div>
-                            <div class="mt-12 lg:mt-0">
-                                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
-                                    <img src="{{ asset('img/app-preview.png') }}" alt="アプリのプレビュー画像" class="w-full object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Worn!+アプリプレビュー';this.onerror='';">
-                                </div>
-                            </div>
+                        </div>
+                        <div class="mx-auto mt-8 md:mt-0 max-w-md bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="{{ asset('img/app-preview.png') }}" alt="アプリのプレビュー画像" class="object-cover">
                         </div>
                     </div>
                 </section>
 
                 <!-- 特徴セクション -->
-                <section class="py-12 bg-white">
+                <section class="py-10 bg-white">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="text-center">
-                            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                            <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
                                 Worn! の特徴
                             </h2>
-                            <p class="mt-4 text-xl text-gray-500">
+                            <p class="mt-4 sm:text-xl text-gray-600">
                                 効率的なワードローブ管理をサポートする機能を提供します
                             </p>
                         </div>
-                        <div class="mt-10">
-                            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        <div class="mt-8">
+                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
                                     <div class="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-500 text-white mb-4">
                                         <i class="fa-solid fa-calendar-check"></i>
@@ -114,7 +110,7 @@
                                     </div>
                                     <h3 class="text-xl font-bold text-gray-900">統計情報</h3>
                                     <p class="mt-2 text-gray-600">
-                                        どの服を頻繁に着ているか、どの服が使われていないかがわかります。
+                                        どの服を頻繁に着ているか、どの服が使われていないかが一目でわかります。
                                     </p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
@@ -132,12 +128,12 @@
                 </section>
 
                 <!-- CTA セクション -->
-                <section class="py-12 bg-indigo-50">
+                <section class="py-10 bg-indigo-50">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
                             今すぐ Worn! を始めましょう
                         </h2>
-                        <p class="mt-4 text-base text-gray-500 max-w-3xl mx-auto">
+                        <p class="mt-4 sm:text-xl text-gray-600 max-w-3xl mx-auto">
                             登録は無料で、たった1分で完了します。あなたの洋服ライフをもっと楽しく、もっと効率的に。
                         </p>
                         <div class="mt-8">
@@ -158,10 +154,8 @@
 
             <!-- フッター -->
             <footer class="bg-white border-t border-gray-200">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div class="text-center text-gray-500 text-sm">
-                        <p>© {{ date('Y') }} All rights reserved, Worn!</p>
-                    </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-gray-600">
+                    <small>© {{ date('Y') }} All rights reserved, Worn!</small>
                 </div>
             </footer>
         </div>
