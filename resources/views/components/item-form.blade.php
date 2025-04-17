@@ -1,11 +1,7 @@
 @props(['item' => null, 'categories', 'colors', 'brands', 'seasons', 'buttonText', 'route', 'method' => 'post'])
 
-<div class="max-w-2xl mx-auto">
-    @if (session('message'))
-        <div class="text-red-600 font-bold my-4">
-            {{ session('message') }}
-        </div>
-    @endif
+<div class="relative max-w-2xl mx-auto">
+    <x-message class="bottom-4 bg-indigo-600" :message="session('message')" />
 
     <form method="post" action="{{ $route }}" class="mx-auto p-4 bg-white rounded-lg shadow-sm" enctype="multipart/form-data">
         @csrf

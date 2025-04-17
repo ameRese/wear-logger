@@ -13,13 +13,13 @@ class WearLogController extends Controller
             'item_id' => $item->id,
             'wear_date' => $request->date ?? today(),
         ]);
-        $request->session()->flash('message', '保存しました');
+        $request->session()->flash('message', '着用記録を登録しました');
         return back();
     }
 
     public function destroy(Request $request, WearLog $wearLog) {
         $wearLog->delete();
-        $request->session()->flash('message', '削除しました');
+        $request->session()->flash('message', '着用記録を解除しました');
         return back();
     }
 

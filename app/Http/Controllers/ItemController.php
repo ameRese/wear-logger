@@ -60,7 +60,7 @@ class ItemController extends Controller
         }
 
         $item = Item::create($validated);
-        $request->session()->flash('message', '保存しました');
+        $request->session()->flash('message', 'アイテムを登録しました');
         return back();
     }
 
@@ -109,7 +109,7 @@ class ItemController extends Controller
         }
 
         $item->update($validated);
-        $request->session()->flash('message', '更新しました');
+        $request->session()->flash('message', 'アイテム情報を更新しました');
         return back();
     }
 
@@ -119,7 +119,7 @@ class ItemController extends Controller
     public function destroy(Request $request, Item $item)
     {
         $item->delete();
-        $request->session()->flash('message', '削除しました');
+        $request->session()->flash('message', 'アイテムを削除しました');
         return redirect()->route('item.index');
     }
 }

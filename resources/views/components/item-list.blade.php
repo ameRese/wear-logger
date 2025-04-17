@@ -32,11 +32,11 @@
                     <x-item-card :item="$item" />
                     <div class="mt-2 flex justify-center gap-4">
                         @if ($item->isWearedToday())
-                        <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
-                            @csrf
-                            @method('delete')
-                            <x-primary-button>今日着た！を解除</x-primary-button>
-                        </form>
+                            <form method="post" action="{{ route('wear_log.destroy', $item->getLatestWearLog()) }}">
+                                @csrf
+                                @method('delete')
+                                <x-primary-button>今日着た！を解除</x-primary-button>
+                            </form>
                         @else
                             <form method="post" action="{{ route('wear_log.store', $item) }}">
                                 @csrf

@@ -4,12 +4,8 @@
             ['name' => 'アイテム一覧', 'url' => route('item.index')],
         ]" />
     </x-slot>
-    <div class="pb-16">
-        @if (session('message'))
-            <div class="text-red-600 font-bold m-2">
-                {{ session('message') }}
-            </div>
-        @endif
+    <div class="pb-16 relative">
+        <x-message class="bottom-20 bg-indigo-600" :message="session('message')" />
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <x-slot name="footer">
