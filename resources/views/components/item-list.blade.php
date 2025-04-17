@@ -4,7 +4,12 @@
     @if ($items->isEmpty())
         <p class="py-4">アイテムはありません。</p>
     @else
-        <x-text-input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="my-2 w-full" />
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none">
+                <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+            </div>
+            <x-text-input type="search" placeholder="名称、カテゴリー、ブランドで絞り込み" id="js-search" class="my-2 w-full pl-10" />
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 pb-2">
             @foreach ($items as $item)
                 <!-- アイテムカード -->
