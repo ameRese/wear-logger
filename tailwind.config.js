@@ -12,7 +12,15 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Noto Sans JP"', 'Helvetica', 'arial', 'sans-serif'],
+                sans: [
+                    '"Noto Sans JP"',
+                    '"Helvetica Neue"',
+                    'Arial',
+                    '"Hiragino Kaku Gothic ProN"',
+                    '"Hiragino Sans"',
+                    'Meiryo',
+                    'sans-serif',
+                ],
             },
         },
     },
