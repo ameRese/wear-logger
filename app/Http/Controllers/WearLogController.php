@@ -40,5 +40,6 @@ class WearLogController extends Controller
         foreach ($wearDatesToDelete as $wearDate) {
             WearLog::where('wear_date', $wearDate)->where('item_id', $item->id)->delete();
         }
+        $request->session()->flash('message', '着用記録を更新しました');
     }
 }

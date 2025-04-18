@@ -27,7 +27,7 @@ const getCalWeekCount = (calStartDate, calEndDate) => {
 // 日付要素を取得
 const getDateElement = (calDate, inputId, baseMonth) => {
     const div = document.createElement('div');
-    div.classList.add('flex-1', 'p-2');
+    div.classList.add('flex-1', 'p-2', 'flex', 'justify-center');
 
     const formattedCalDate = calDate
         .toLocaleDateString('ja-JP', {
@@ -49,16 +49,10 @@ const getDateElement = (calDate, inputId, baseMonth) => {
     const label = document.createElement('label');
     label.setAttribute('for', `checkbox${inputId}`);
     // チェック時のスタイルのみapp.cssで指定
-    label.classList.add(
-        'cursor-pointer',
-        'rounded-full',
-        'w-8',
-        'h-8',
-        'flex',
-        'items-center',
-        'justify-center',
-        'mx-auto'
-    );
+    label.classList.add('cursor-pointer', 'rounded-full', 'flex', 'items-center', 'justify-center');
+    // w-8, h-8が機能しなかったので直接設定
+    label.style.width = '2rem';
+    label.style.height = '2rem';
     label.textContent = calDate.getDate();
     if (calDate.getMonth() !== baseMonth) {
         label.classList.add('text-gray-300');

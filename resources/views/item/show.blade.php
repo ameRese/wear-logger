@@ -8,11 +8,7 @@
 
     <div class="px-2 py-4">
         <div class="max-w-2xl mx-auto">
-            @if (session('message'))
-                <div class="text-red-600 font-bold my-2">
-                    {{ session('message') }}
-                </div>
-            @endif
+            <x-message class="bottom-4 bg-indigo-600" :message="session('message')" />
 
             <div class="bg-white rounded-lg shadow-sm p-4">
                 <span class="hidden" id="js-item-id">{{ $item->id }}</span>
