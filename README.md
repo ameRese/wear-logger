@@ -2,7 +2,7 @@
 洋服の着用状況を簡単に記録・管理できるサービスです。  
 どの服をいつ着たか、どれだけ活用しているかを可視化して、より効率的なワードローブ管理をサポートします。
 
-![アプリのプレビュー画像](/public/img/app-preview.png)
+<img width="375" src="/public/img/app-preview.png">
 
 ## URL
 未ホスティング
@@ -16,10 +16,10 @@
 
 ## 仕様書
 ### プロトタイプ
-![Wireframe](https://github.com/user-attachments/assets/9cf16b7d-07c6-4c4a-af65-69007f652c96)
+<img width="720" src="https://github.com/user-attachments/assets/9cf16b7d-07c6-4c4a-af65-69007f652c96">
 
 ### ER図
-![ER-Diagram](https://github.com/user-attachments/assets/505aef27-1db8-4476-aff5-7193844f82d9)
+<img width="720" src="https://github.com/user-attachments/assets/505aef27-1db8-4476-aff5-7193844f82d9">
 
 ## 機能一覧
 - ユーザー登録、ログイン機能(Breeze)
