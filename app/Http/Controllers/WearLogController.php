@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\WearLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WearLogController extends Controller
 {
@@ -41,5 +42,37 @@ class WearLogController extends Controller
             WearLog::where('wear_date', $wearDate)->where('item_id', $item->id)->delete();
         }
         $request->session()->flash('message', '着用記録を更新しました');
+    }
+
+    public function bulkStore(Request $request)
+    {
+        $request->validate([
+            'item_ids' => 'required|array',
+            'item_ids.*' => 'exists:items,id',
+        ]);
+        $items = Item::whereIn('id', $request->item_ids)->where('user_id', Auth::id())->get();
+        foreach ($items as $item) {
+            // 既に当日分が登録されていなければ登録
+            if (!$item->isWearedToday()) {
+                WearLog::create([
+                    'item_id' => $item->id,
+                    'wear_date' => now()->format('Y-m-d'),
+                ]);
+            }
+        }
+        $request->session()->flash('message', '着用記録を登録しました');
+    }
+
+    public function bulkDestroy(Request $request)
+    {
+        $request->validate([
+            'item_ids' => 'required|array',
+            'item_ids.*' => 'exists:items,id',
+        ]);
+        $items = Item::whereIn('id', $request->item_ids)->where('user_id', Auth::id())->get();
+        foreach ($items as $item) {
+            $item->getLatestWearLog()->delete();
+        }
+        $request->session()->flash('message', '着用記録を解除しました');
     }
 }

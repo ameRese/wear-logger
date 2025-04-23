@@ -1,3 +1,11 @@
+// モーダル操作用のデータ
+const modalState = {
+    isMultiSelectMode: false, // 複数選択モードかどうか
+};
+
+// グローバルにエクスポートして他のモジュールからアクセス可能にする
+window.modalState = modalState;
+
 // 対象がモーダル背景またはキャンセルボタンの場合にモーダルを閉じる
 const closeModal = (e, modal) => {
     if (e.target === modal || e.target.className.includes('js-cancel')) {
@@ -10,6 +18,11 @@ const modalClickHandler = (e) => closeModal(e, e.currentTarget);
 
 // モーダルを開く
 const openModal = (e) => {
+    // 複数選択モード中はモーダルを開かない
+    if (modalState.isMultiSelectMode) {
+        return;
+    }
+
     e.preventDefault();
     // クリックイベントの登録要素を取得するためにtargetでなくcurrentTargetプロパティを使う
     const modalId = e.currentTarget.getAttribute('data-modal-target');

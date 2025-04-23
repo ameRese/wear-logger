@@ -32,4 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::get('stat/wear_rank', [StatController::class, 'wearRank'])->name('stat.wear_rank');
 });
 
+// 一括操作用のAPIエンドポイント
+Route::post('/wear-logs/bulk', [WearLogController::class, 'bulkStore']);
+Route::post('/wear-logs/bulk-delete', [WearLogController::class, 'bulkDestroy']);
+Route::post('/items/bulk-delete', [ItemController::class, 'bulkDestroy']);
+
 require __DIR__.'/auth.php';

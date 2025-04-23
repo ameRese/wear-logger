@@ -8,6 +8,7 @@ use App\Models\Color;
 use App\Models\Item;
 use App\Models\Season;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
@@ -118,8 +119,31 @@ class ItemController extends Controller
      */
     public function destroy(Request $request, Item $item)
     {
+        // 画像があれば削除
+        if ($item->image_path) {
+            Storage::delete('public/' . $item->image_path);
+        }
         $item->delete();
         $request->session()->flash('message', 'アイテムを削除しました');
         return redirect()->route('item.index');
+    }
+
+    // 一括でアイテムを削除
+    public function bulkDestroy(Request $request)
+    {
+        $request->validate([
+            'item_ids' => 'required|array',
+            'item_ids.*' => 'exists:items,id',
+        ]);
+        $items = Item::whereIn('id', $request->item_ids)->where('user_id', Auth::id())->get();
+        foreach ($items as $item) {
+            // 画像があれば削除
+            if ($item->image_path) {
+                Storage::delete('public/' . $item->image_path);
+            }
+            // アイテム削除（関連する着用ログはカスケード削除される）
+            $item->delete();
+        }
+        return response()->json(['message' => '複数のアイテムを削除しました'], 200);
     }
 }

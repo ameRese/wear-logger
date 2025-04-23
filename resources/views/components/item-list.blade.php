@@ -13,9 +13,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 pb-2">
             @foreach ($items as $item)
                 <!-- アイテムカード -->
-                <div class="js-item">
+                <div class="js-item relative rounded transition-all"
+                    data-item-id="{{ $item->id }}"
+                    data-is-weared="{{ $item->isWearedToday() ? '1' : '0' }}">
                     @if ($showModal)
-                        <a href="#" data-modal-target="item-modal-{{ $item->id }}">
+                        <a href="#" data-modal-target="item-modal-{{ $item->id }}" class="js-item-link">
                     @endif
                         <x-item-card class="{{ $item->isWearedToday() ? 'border-t-4 border-t-indigo-600' : '' }}"
                             :item="$item" :enableSearch="true" />
@@ -49,7 +51,7 @@
                             </form>
                         @endif
                         <a href="{{ route('item.show', $item) }}">
-                            <x-primary-button>アイテム詳細</x-primary-button>
+                            <x-primary-button type="button">アイテム詳細</x-primary-button>
                         </a>
                     </div>
                 </dialog>

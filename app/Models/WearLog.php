@@ -10,7 +10,7 @@ class WearLog extends Model
         'item_id',
         'wear_date',
     ];
-    
+
     public function item() {
         return $this->belongsTo(Item::class);
     }
