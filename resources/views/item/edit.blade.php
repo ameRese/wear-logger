@@ -19,4 +19,5 @@
             method="patch"
         />
     </div>
+    @vite(['resources/js/modules/image-preview.js'])
 </x-app-layout>

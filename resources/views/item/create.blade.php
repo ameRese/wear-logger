@@ -15,4 +15,5 @@
             :route="route('item.store')"
         />
     </div>
+    @vite(['resources/js/modules/image-preview.js'])
 </x-app-layout>

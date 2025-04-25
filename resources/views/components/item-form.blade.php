@@ -16,10 +16,11 @@
                     <label>
                         <span class="hidden md:block mb-1 font-medium text-gray-700 text-left">アイテム画像</span>
                         <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:bg-gray-50 transition cursor-pointer">
-                            <img src="{{ $item?->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
-                                alt="" class="mx-auto mb-2 max-h-60 object-contain">
+                            <img id="js-image-preview" 
+                                src="{{ $item?->image_path ? asset('storage/' . $item->image_path) : asset('img/no_image.png') }}"
+                                alt="アイテム画像" class="mx-auto mb-2 max-h-60 object-contain">
                             <p class="text-sm text-gray-500">クリックして画像をアップロード</p>
-                            <input type="file" name="image" class="hidden" accept="image/png, image/jpeg">
+                            <input type="file" name="image" id="js-image-upload" class="hidden" accept="image/png, image/jpeg">
                         </div>
                     </label>
                 </div>
