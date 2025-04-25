@@ -9,7 +9,7 @@
         <x-item-list :items="$items" :showModal="true" />
     </div>
     <x-slot name="footer">
-        <div class="fixed bottom-0 w-full bg-white">
+        <div class="fixed z-50 bottom-0 w-full bg-white">
             <hr>
             <div class="flex justify-center my-2" id="js-normal-buttons">
                 <a href="{{ route('item.create') }}">
@@ -22,7 +22,7 @@
             
             <!-- 複数選択時に表示するボタン群 -->
             <div class="hidden flex-col items-center my-2" id="js-multi-select-actions">
-                <div class="flex justify-center mb-2">
+                <div class="flex justify-center items-center mb-2">
                     <span class="mr-2 font-bold"><span id="js-selected-count">0</span>件選択中</span>
                     <x-secondary-button type="button" id="js-cancel-selection" class="mr-2">
                         キャンセル

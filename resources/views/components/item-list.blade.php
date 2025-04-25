@@ -16,10 +16,13 @@
                 <div class="js-item relative rounded transition-all"
                     data-item-id="{{ $item->id }}"
                     data-is-weared="{{ $item->isWearedToday() ? '1' : '0' }}">
+                    <div class="js-item-checkbox absolute top-2 left-2 z-10 hidden">
+                        <input type="checkbox" class="h-5 w-5 rounded-md border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    </div>
                     @if ($showModal)
                         <a href="#" data-modal-target="item-modal-{{ $item->id }}" class="js-item-link">
                     @endif
-                        <x-item-card class="{{ $item->isWearedToday() ? 'border-t-4 border-t-indigo-600' : '' }}"
+                        <x-item-card class="js-item-card {{ $item->isWearedToday() ? 'border-t-4 border-t-indigo-600' : '' }}"
                             :item="$item" :enableSearch="true" />
                     @if ($showModal)
                         </a>

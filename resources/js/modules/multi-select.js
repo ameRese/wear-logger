@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedCountElement = document.getElementById('js-selected-count');
     const itemLinks = document.querySelectorAll('.js-item-link');
     const itemCards = document.querySelectorAll('.js-item');
+    const itemCheckboxes = document.querySelectorAll('.js-item-checkbox');
 
     // 「まとめて」操作ボタン
     const toggleWearBtn = document.getElementById('js-toggle-wear-btn');
@@ -46,17 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.classList.add('cursor-pointer');
                 card.dataset.selectable = 'true';
             });
+            // チェックボックスを表示
+            itemCheckboxes.forEach((checkbox) => {
+                checkbox.classList.remove('hidden');
+            });
         } else {
             // UI表示の切り替え
             normalButtons.classList.remove('hidden');
             multiSelectActions.classList.add('hidden');
             multiSelectActions.classList.remove('flex');
-            // 選択状態をリセット
-            selectedItemIds.clear();
-            // 選択表示を削除
-            itemCards.forEach((card) => {
-                card.classList.remove('border', 'border-2', 'border-indigo-600');
-            });
             // リンクを再有効化
             itemLinks.forEach((link) => {
                 if (link.dataset.originalHref) {
@@ -68,7 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.classList.remove('cursor-pointer');
                 card.dataset.selectable = 'false';
             });
-            // 選択数を更新
+            // チェックボックスを非表示
+            itemCheckboxes.forEach((checkbox) => {
+                checkbox.classList.add('hidden');
+                const cb = checkbox.querySelector('input[type="checkbox"]');
+                if (cb) {
+                    cb.checked = false;
+                }
+            });
+            // 選択状態をリセット
+            selectedItemIds.clear();
             updateSelectedCount();
         }
     }
@@ -76,15 +84,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // アイテムの選択状態を切り替える
     function toggleItemSelection(itemCard) {
         const itemId = itemCard.dataset.itemId;
+        const checkbox = itemCard.querySelector('.js-item-checkbox input[type="checkbox"]');
 
         if (selectedItemIds.has(itemId)) {
             // すでに選択されている場合は選択解除
             selectedItemIds.delete(itemId);
-            itemCard.classList.remove('border', 'border-2', 'border-indigo-600');
+            if (checkbox) checkbox.checked = false;
         } else {
             // 未選択の場合は選択
             selectedItemIds.add(itemId);
-            itemCard.classList.add('border', 'border-2', 'border-indigo-600');
+            if (checkbox) checkbox.checked = true;
         }
 
         updateSelectedCount();
