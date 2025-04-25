@@ -7,7 +7,7 @@ const instance = axios.create({
 
 export const getWearDates = async (itemId) => {
     try {
-        const response = await instance.get(`wear_log/${itemId}`);
+        const response = await instance.get(`wear-log/${itemId}`);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -16,7 +16,7 @@ export const getWearDates = async (itemId) => {
 
 export const updateWearLogs = async (wearDatesToAdd, wearDatesToDelete, itemId) => {
     try {
-        const response = await instance.post(`wear_log/update/${itemId}`, {
+        const response = await instance.post(`wear-log/update/${itemId}`, {
             wearDatesToAdd,
             wearDatesToDelete,
         });

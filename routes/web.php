@@ -22,19 +22,19 @@ Route::middleware('auth')->group(function () {
     Route::resource('item', ItemController::class)->only(['index', 'create', 'store']);
     Route::resource('item', ItemController::class)->except(['index', 'create', 'store'])->middleware('item_owner');
 
-    Route::post('wear_log/store/{item}', [WearLogController::class, 'store'])->name('wear_log.store')->middleware('item_owner');
-    Route::delete('wear_log/{wear_log}', [WearLogController::class, 'destroy'])->name('wear_log.destroy')->middleware('wear_log_owner');
-    Route::get('wear_log/{item}', [WearLogController::class, 'getWearDates']);
-    Route::post('wear_log/update/{item}', [WearLogController::class, 'updateWearLogs']);
+    Route::post('wear-log/store/{item}', [WearLogController::class, 'store'])->name('wear-log.store')->middleware('item_owner');
+    Route::delete('wear-log/{wear_log}', [WearLogController::class, 'destroy'])->name('wear-log.destroy')->middleware('wear_log_owner');
+    Route::get('wear-log/{item}', [WearLogController::class, 'getWearDates']);
+    Route::post('wear-log/update/{item}', [WearLogController::class, 'updateWearLogs']);
 
     Route::get('stat', [StatController::class, 'index'])->name('stat.index');
     Route::get('stat/unused_item', [StatController::class, 'unusedItem'])->name('stat.unused_item');
     Route::get('stat/wear_rank', [StatController::class, 'wearRank'])->name('stat.wear_rank');
 
     // 一括操作用のAPIエンドポイント
-    Route::post('/wear-logs/bulk', [WearLogController::class, 'bulkStore']);
-    Route::post('/wear-logs/bulk-delete', [WearLogController::class, 'bulkDestroy']);
-    Route::post('/items/bulk-delete', [ItemController::class, 'bulkDestroy']);
+    Route::post('wear-logs/bulk', [WearLogController::class, 'bulkStore']);
+    Route::post('wear-logs/bulk-delete', [WearLogController::class, 'bulkDestroy']);
+    Route::post('items/bulk-delete', [ItemController::class, 'bulkDestroy']);
 });
 
 require __DIR__.'/auth.php';
