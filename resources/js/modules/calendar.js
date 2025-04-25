@@ -1,4 +1,4 @@
-import { getWearDates, updateWearLogs } from './HttpRequest';
+import { getWearDates, updateWearLogs } from './http-request';
 
 // カレンダー開始日を取得
 const getCalStartDate = (baseDate) => {
