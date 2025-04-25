@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::post('wear-log/update/{item}', [WearLogController::class, 'updateWearLogs']);
 
     Route::get('stat', [StatController::class, 'index'])->name('stat.index');
-    Route::get('stat/unused_item', [StatController::class, 'unusedItem'])->name('stat.unused_item');
-    Route::get('stat/wear_rank', [StatController::class, 'wearRank'])->name('stat.wear_rank');
+    Route::get('stat/unused-item', [StatController::class, 'unusedItem'])->name('stat.unused-item');
+    Route::get('stat/wear-rank', [StatController::class, 'wearRank'])->name('stat.wear-rank');
 
     // 一括操作用のAPIエンドポイント
     Route::post('wear-logs/bulk', [WearLogController::class, 'bulkStore']);

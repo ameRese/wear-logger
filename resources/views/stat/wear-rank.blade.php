@@ -2,8 +2,8 @@
     <x-slot name="header">
         <x-breadcrumb :pages="[
             ['name' => '統計情報', 'url' => route('stat.index')],
-            ['name' => '未使用アイテムリスト', 'url' => route('stat.unused_item')],
+            ['name' => '着用回数ランキング', 'url' => route('stat.wear-rank')],
         ]" />
     </x-slot>
-    <x-item-list :items="$unusedItems" :showModal="false" />
+    <x-item-list :items="$wearCountSortedItems" :showModal="false" />
 </x-app-layout>

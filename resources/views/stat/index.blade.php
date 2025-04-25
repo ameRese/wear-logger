@@ -13,7 +13,7 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                            <a href="{{ route('stat.unused_item') }}" class="block p-4">
+                            <a href="{{ route('stat.unused-item') }}" class="block p-4">
                                 <div class="flex items-center">
                                     <div class="flex items-center justify-center bg-blue-100 rounded-full mr-4 w-12 h-12">
                                         <i class="fa-solid fa-clipboard text-blue-600"></i>
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                         <div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                            <a href="{{ route('stat.wear_rank') }}" class="block p-4">
+                            <a href="{{ route('stat.wear-rank') }}" class="block p-4">
                                 <div class="flex items-center">
                                     <div class="flex items-center justify-center bg-green-100 rounded-full mr-4 w-12 h-12">
                                         <i class="fa-solid fa-ranking-star text-green-600"></i>
