@@ -25,22 +25,25 @@ const generateItemDictionary = () => {
         const category = searchDescendantNode(item, 'js-category');
         const brand = searchDescendantNode(item, 'js-brand');
         const name = searchDescendantNode(item, 'js-name');
+        // 大文字小文字は無視
         itemDictionary.push({
             item: item,
-            category: category.textContent,
-            brand: brand.textContent,
-            name: name.textContent,
+            category: category.textContent.toLowerCase(),
+            brand: brand.textContent.toLowerCase(),
+            name: name.textContent.toLowerCase(),
         });
     }
 };
 
 // インクリメンタルサーチ
 const searchIncrementally = (inputText) => {
+    // 大文字小文字は無視
+    const searchText = inputText.toLowerCase();
     itemDictionary.forEach((entry) => {
         if (
-            entry.category.includes(inputText) ||
-            entry.brand.includes(inputText) ||
-            entry.name.includes(inputText)
+            entry.category.includes(searchText) ||
+            entry.brand.includes(searchText) ||
+            entry.name.includes(searchText)
         ) {
             entry.item.classList.remove('hidden');
         } else {
