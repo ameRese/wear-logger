@@ -95,7 +95,7 @@
         <dialog id="calendar-modal" class="p-2 w-full max-w-md rounded-lg">
             <div class="text-center">
                 <div class="flex justify-around">
-                    <button type="button" id="js-previous-month" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 aria-label="Previous">
+                    <button type="button" id="js-previous-month" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100" aria-label="Previous">
                         <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                     </button>
                     <span id="js-calendar-header" class="flex items-center font-semibold"></span>

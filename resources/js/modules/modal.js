@@ -8,7 +8,7 @@ window.modalState = modalState;
 
 // 対象がモーダル背景またはキャンセルボタンの場合にモーダルを閉じる
 const closeModal = (e, modal) => {
-    if (e.target === modal || e.target.className.includes('js-cancel')) {
+    if (e.target === modal || (e.target.classList && e.target.classList.contains('js-cancel'))) {
         modal.close();
     }
 };
