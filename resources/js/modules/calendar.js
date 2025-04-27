@@ -145,10 +145,10 @@ document.getElementById('js-next-month').addEventListener('click', () => {
     generateCalendar(baseDate);
 });
 
-document.getElementById('js-update').addEventListener('click', () => {
+document.getElementById('js-update').addEventListener('click', async () => {
     const wearDatesToAdd = Array.from(selectedWearDates).filter((v) => !initialWearDates.has(v));
     const wearDatesToDelete = Array.from(initialWearDates).filter((v) => !selectedWearDates.has(v));
-    updateWearLogs(wearDatesToAdd, wearDatesToDelete, itemId).then(() => {
+    await updateWearLogs(wearDatesToAdd, wearDatesToDelete, itemId).then(() => {
         window.location.reload();
     });
 });

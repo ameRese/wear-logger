@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { bulkToggleWear, bulkDeleteItems } from './http-request';
 
 document.addEventListener('DOMContentLoaded', function () {
     const multiSelectBtn = document.getElementById('js-multi-select-btn');
@@ -154,16 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     }
 
-    // Axiosインスタンスの作成
-    const instance = axios.create({
-        baseURL: '/',
-        timeout: 1000,
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': getCsrfToken(),
-        },
-    });
-
     // アイテムカードをクリックした時の処理 (パフォーマンス向上のためにdocumentレベルで登録)
     document.addEventListener('click', function (e) {
         // 複数選択モードがアクティブかつ、js-item内部の要素がクリックされた場合
@@ -196,16 +186,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (allWeared) {
                 // 「まとめて解除」の処理
                 const wearedItemIds = getSelectedItemIdsByWearStatus(true);
-                response = await instance.post('wear-logs/bulk-delete', {
-                    item_ids: wearedItemIds,
-                });
+                response = await bulkToggleWear(false, wearedItemIds);
             } else {
                 // 「まとめて今日着た！」の処理
                 // 着ていないアイテムだけ「今日着た！」に設定
                 const notWearedItemIds = getSelectedItemIdsByWearStatus(false);
-                response = await instance.post('wear-logs/bulk', {
-                    item_ids: notWearedItemIds,
-                });
+                response = await bulkToggleWear(true, notWearedItemIds);
             }
 
             if (response.status >= 200 && response.status < 300) {
@@ -233,9 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const response = await instance.post('items/bulk-delete', {
-                item_ids: itemIds,
-            });
+            const response = await bulkDeleteItems(itemIds);
 
             if (response.status >= 200 && response.status < 300) {
                 window.location.reload();
