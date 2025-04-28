@@ -125,19 +125,17 @@
             </div>
         </dialog>
         <!-- 削除確認モーダル -->
-        <dialog id="delete-modal" class="max-w-full rounded-lg shadow-sm p-4">
-            <div class="text-center">
-                <p class="pb-4">本当に削除してよろしいですか？</p>
-                <div class="flex justify-center">
-                    <form method="post" action="{{ route('item.destroy', $item) }}">
-                        @csrf
-                        @method('delete')
-                        <x-danger-button>はい</x-danger-button>
-                    </form>
-                    <x-secondary-button class="js-cancel ml-2">
-                        キャンセル
-                    </x-secondary-button>
-                </div>
+        <dialog id="delete-modal" class="p-4 rounded-lg">
+            <p>このアイテムを削除します。この操作は取り消せません。</p>
+            <div class="flex justify-end mt-4 gap-2">
+                <x-secondary-button class="js-cancel">
+                    キャンセル
+                </x-secondary-button>
+                <form method="post" action="{{ route('item.destroy', $item) }}">
+                    @csrf
+                    @method('delete')
+                    <x-danger-button>削除する</x-danger-button>
+                </form>
             </div>
         </dialog>
     </x-slot>

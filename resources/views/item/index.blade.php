@@ -42,7 +42,6 @@
 
     <!-- 削除確認モーダル -->
     <dialog id="js-delete-confirm-modal" class="p-4 rounded-lg">
-        <h3 class="text-lg font-bold mb-4">アイテムの削除</h3>
         <p>選択したアイテムを削除します。この操作は取り消せません。</p>
         <div class="flex justify-end mt-4 gap-2">
             <x-secondary-button type="button" onclick="document.getElementById('js-delete-confirm-modal').close()">
