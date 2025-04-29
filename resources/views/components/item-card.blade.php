@@ -28,7 +28,7 @@
         <div class="mt-1">
             <dl class="grid grid-cols-2">
                 <dt class="text-left">最終着用日:</dt>
-                <dd class="text-right">{{ $item->getLatestWearLog()?->wear_date ?? '-' }}</dd>
+                <dd class="text-right">{{ $item->getLatestWearLog()?->wear_date->format('Y-m-d') ?? '-' }}</dd>
             </dl>
         </div>
     </div>

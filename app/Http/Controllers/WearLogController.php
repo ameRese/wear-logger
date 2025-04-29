@@ -25,22 +25,31 @@ class WearLogController extends Controller
     }
 
     public function getWearDates(Item $item) {
-        $wearDates = WearLog::where('item_id', $item->id)->pluck('wear_date');
+        $wearDates = WearLog::where('item_id', $item->id)
+            ->pluck('wear_date')
+            ->map(function ($date) {
+                return $date->format('Y-m-d');
+            });
         return response()->json($wearDates);
     }
 
     public function updateWearLogs(Request $request, Item $item) {
         $wearDatesToAdd = $request->input('wearDatesToAdd');
         $wearDatesToDelete = $request->input('wearDatesToDelete');
+
+        // 追加処理
         foreach ($wearDatesToAdd as $wearDate) {
             WearLog::create([
                 'item_id' => $item->id,
                 'wear_date' => $wearDate,
             ]);
         }
+
+        // 削除処理
         foreach ($wearDatesToDelete as $wearDate) {
             WearLog::where('wear_date', $wearDate)->where('item_id', $item->id)->delete();
         }
+
         $request->session()->flash('message', '着用記録を更新しました');
     }
 
@@ -56,7 +65,7 @@ class WearLogController extends Controller
             if (!$item->isWearedToday()) {
                 WearLog::create([
                     'item_id' => $item->id,
-                    'wear_date' => now()->format('Y-m-d'),
+                    'wear_date' => today(),
                 ]);
             }
         }

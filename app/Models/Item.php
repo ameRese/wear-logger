@@ -54,6 +54,6 @@ class Item extends Model
     }
 
     public function isWearedToday() {
-        return $this->getLatestWearLog()?->wear_date === today()->toDateString();
+        return $this->getLatestWearLog()?->wear_date->isToday();
     }
 }

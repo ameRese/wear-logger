@@ -11,6 +11,13 @@ class WearLog extends Model
         'wear_date',
     ];
 
+    // wear_dateは日付型 (Carbonインスタンス) として扱う
+    protected function casts(): array {
+        return [
+            'wear_date' => 'date',
+        ];
+    }
+
     public function item() {
         return $this->belongsTo(Item::class);
     }
