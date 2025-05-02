@@ -58,7 +58,7 @@
                                 <div>
                                     <p class="text-gray-700 font-medium">購入日</p>
                                     <div class="mt-1 p-2 border rounded-md bg-gray-50">
-                                        {{ $item->purchase_date ?: '未設定' }}
+                                        {{ $item->purchase_date->format('Y-m-d') ?: '未設定' }}
                                     </div>
                                 </div>
                                 <div>

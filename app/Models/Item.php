@@ -19,6 +19,13 @@ class Item extends Model
         'pre_regist_wear_count',
     ];
 
+    // purchase_dateは日付型 (Carbonインスタンス) として扱う
+    protected function casts(): array {
+        return [
+            'purchase_date' => 'date',
+        ];
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }
