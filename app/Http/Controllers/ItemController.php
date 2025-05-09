@@ -141,7 +141,7 @@ class ItemController extends Controller
             if ($item->image_path) {
                 Storage::delete('public/' . $item->image_path);
             }
-            // アイテム削除（関連する着用ログはカスケード削除される）
+            // アイテム削除（関連する着用記録はカスケード削除される）
             $item->delete();
         }
         return response()->json(['message' => '複数のアイテムを削除しました'], 200);
