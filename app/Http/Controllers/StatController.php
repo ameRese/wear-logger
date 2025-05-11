@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\WearLog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class StatController extends Controller
 {
@@ -85,7 +84,7 @@ class StatController extends Controller
         $wearCountSortedItems = Item::where('user_id', auth()->id())
             ->withCount('wearLogs')
             ->get()
-            ->sortByDesc(fn($item) => $item->wearLogs_count + $item->pre_regist_wear_count);
+            ->sortByDesc(fn($item) => $item->wear_logs_count + $item->pre_regist_wear_count);
         return view('stat.wear-rank', compact('wearCountSortedItems'));
     }
 }
