@@ -80,11 +80,33 @@ class StatController extends Controller
         return view('stat.unused-item', compact('unusedItems', 'availableYears', 'selectedYear'));
     }
 
-    public function wearRank() {
-        $wearCountSortedItems = Item::where('user_id', auth()->id())
-            ->withCount('wearLogs')
-            ->get()
-            ->sortByDesc(fn($item) => $item->wear_logs_count + $item->pre_regist_wear_count);
-        return view('stat.wear-rank', compact('wearCountSortedItems'));
+    public function wearRank(Request $request) {
+        $selectedYear = $request->input('year', 'all');
+        $query = Item::where('user_id', auth()->id());
+
+        if ($selectedYear === 'all') {
+            // 全期間の場合、全ての着用ログをカウント対象に
+            $items = $query->withCount('wearLogs')->get();
+        } else {
+            // 特定年が選択されている場合、その年の着用ログだけをカウント対象に
+            $items = $query->withCount(['wearLogs' => fn($wearLogs) => $wearLogs->whereYear('wear_date', $selectedYear)])
+                ->get();
+        }
+
+        // コレクションをソート
+        $wearCountSortedItems = $items->sortByDesc(function($item) use ($selectedYear) {
+            if ($selectedYear === 'all') {
+                // 全期間の場合、登録前着用日数を含め、全期間の着用回数でソート
+                return $item->wear_logs_count + $item->pre_regist_wear_count;
+            } else {
+                // 特定年が選択されている場合、登録前着用日数は計算に含めず、特定年の着用回数でソート
+                return $item->wear_logs_count;
+            }
+        });
+
+        // select用に利用可能な年のリストを取得
+        $availableYears = $this->getAvailableYears();
+
+        return view('stat.wear-rank', compact('wearCountSortedItems', 'availableYears', 'selectedYear'));
     }
 }

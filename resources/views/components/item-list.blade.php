@@ -1,4 +1,4 @@
-@props(['items', 'showModal' => false])
+@props(['items', 'showModal' => false, 'selectedYear' => 'all'])
 
 <div class="container mx-auto px-2 text-center">
     @if ($items->isEmpty())
@@ -23,7 +23,7 @@
                         <a href="#" data-modal-target="item-modal-{{ $item->id }}" class="js-item-link">
                     @endif
                         <x-item-card class="js-item-card {{ $item->isWearedToday() ? 'border-t-4 border-t-indigo-600' : '' }}"
-                            :item="$item" :enableSearch="true" />
+                            :item="$item" :enableSearch="true" :selectedYear="$selectedYear" />
                     @if ($showModal)
                         </a>
                     @endif

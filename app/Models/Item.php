@@ -50,10 +50,16 @@ class Item extends Model
         return $this->hasMany(WearLog::class);
     }
 
-    public function getWearCount() {
-        $preRegistWearCount = $this->pre_regist_wear_count;
-        $postRegistWearCount = $this->wearLogs()->count();
-        return $preRegistWearCount + $postRegistWearCount;
+    public function getWearCount($year = null) {
+        if ($year === null || $year === 'all') {
+            // 期間未指定または全期間の場合
+            $preRegistWearCount = $this->pre_regist_wear_count;
+            $postRegistWearCount = $this->wearLogs()->count();
+            return $preRegistWearCount + $postRegistWearCount;
+        } else {
+            // 特定年が指定された場合
+            return $this->wearLogs()->whereYear('wear_date', $year)->count();
+        }
     }
 
     public function getLatestWearLog() {

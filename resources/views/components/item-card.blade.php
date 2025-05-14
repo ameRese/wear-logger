@@ -1,4 +1,4 @@
-@props(['item', 'enableSearch' => false])
+@props(['item', 'enableSearch' => false, 'selectedYear' => 'all'])
 
 <div {{ $attributes->merge(['class' => 'flex bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden']) }}>
     <div class="w-1/3 relative">
@@ -22,7 +22,7 @@
         <div class="mt-1">
             <dl class="grid grid-cols-2">
                 <dt class="text-left">着用日数:</dt>
-                <dd class="text-right">{{ $item->getWearCount() }}</dd>
+                <dd class="text-right">{{ $item->getWearCount($selectedYear) }}</dd>
             </dl>
         </div>
         <div class="mt-1">
