@@ -104,6 +104,11 @@ class ItemController extends Controller
         $validated['user_id'] = auth()->id();
 
         if ($request->hasFile('image')) {
+            // 既存の画像があれば削除
+            if ($item->image_path) {
+                Storage::delete('public/' . $item->image_path);
+            }
+            // 新しい画像を保存
             $file = $request->file('image');
             $path = Storage::disk('public')->putFile('img', $file);
             $validated['image_path'] = $path;
@@ -141,7 +146,6 @@ class ItemController extends Controller
             if ($item->image_path) {
                 Storage::delete('public/' . $item->image_path);
             }
-            // アイテム削除（関連する着用記録はカスケード削除される）
             $item->delete();
         }
         return response()->json(['message' => '複数のアイテムを削除しました'], 200);
