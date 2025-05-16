@@ -104,11 +104,10 @@ class ItemController extends Controller
         $validated['user_id'] = auth()->id();
 
         if ($request->hasFile('image')) {
-            // 既存の画像があれば削除
+            // 既存の画像があれば削除してから新しい画像を保存
             if ($item->image_path) {
                 Storage::delete('public/' . $item->image_path);
             }
-            // 新しい画像を保存
             $file = $request->file('image');
             $path = Storage::disk('public')->putFile('img', $file);
             $validated['image_path'] = $path;
@@ -124,10 +123,6 @@ class ItemController extends Controller
      */
     public function destroy(Request $request, Item $item)
     {
-        // 画像があれば削除
-        if ($item->image_path) {
-            Storage::delete('public/' . $item->image_path);
-        }
         $item->delete();
         $request->session()->flash('message', 'アイテムを削除しました');
         return redirect()->route('item.index');
@@ -142,12 +137,8 @@ class ItemController extends Controller
         ]);
         $items = Item::whereIn('id', $request->item_ids)->where('user_id', Auth::id())->get();
         foreach ($items as $item) {
-            // 画像があれば削除
-            if ($item->image_path) {
-                Storage::delete('public/' . $item->image_path);
-            }
             $item->delete();
         }
-        return response()->json(['message' => '複数のアイテムを削除しました'], 200);
+        $request->session()->flash('message', 'アイテムを削除しました');
     }
 }

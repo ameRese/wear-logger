@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
 {
@@ -68,5 +69,18 @@ class Item extends Model
 
     public function isWearedToday() {
         return $this->getLatestWearLog()?->wear_date->isToday();
+    }
+
+    protected static function booted()
+    {
+        // アイテム削除時の処理
+        static::deleting(function($item) {
+            // 関連する着用記録を削除
+            $item->wearLogs()->delete();
+            // 画像があれば削除
+            if ($item->image_path) {
+                Storage::delete('public/' . $item->image_path);
+            }
+        });
     }
 }
