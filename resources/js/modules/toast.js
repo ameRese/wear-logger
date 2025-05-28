@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const timeout = setTimeout(() => {
         hideToast();
-    }, 5000);
+    }, 3000);
 
     closeButton.addEventListener('click', () => {
         clearTimeout(timeout); // タイマーをクリア
