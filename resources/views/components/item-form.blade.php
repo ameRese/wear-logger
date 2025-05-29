@@ -93,7 +93,7 @@
                         <div>
                             <x-input-label for="purchase-date" value="購入日" />
                             <x-text-input type="date" name="purchase_date" id="purchase-date" placeholder="オプション" 
-                                class="block mt-1 w-full" value="{{ old('purchase_date', $item?->purchase_date) }}" />
+                                class="block mt-1 w-full" value="{{ old('purchase_date', $item?->purchase_date ? $item->purchase_date->format('Y-m-d') : null) }}" />
                         </div>
                         <div>
                             <x-input-label for="pre-regist-wear-count" value="登録前の着用日数" />
