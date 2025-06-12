@@ -5,7 +5,7 @@
 <img width="375" src="/public/img/app-preview.png">
 
 ## URL
-未ホスティング
+https://wear-logger.fly.dev/
 
 ## 使用技術
 - PHP 8.2
